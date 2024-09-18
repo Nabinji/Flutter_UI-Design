@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/consts.dart';
 import 'package:intl/intl.dart';
-
-import '../consts.dart';
+import '../Widget/seat_status.dart';
 import '../models/seats_model.dart';
-import '../widgets/seat_status.dart';
 
-class ReservationPage extends StatefulWidget {
-  const ReservationPage({super.key});
+class ReservationScreen extends StatefulWidget {
+  const ReservationScreen({super.key});
 
   @override
-  State<ReservationPage> createState() => _ReservationPageState();
+  State<ReservationScreen> createState() => _ReservationScreenState();
 }
 
-class _ReservationPageState extends State<ReservationPage> {
+class _ReservationScreenState extends State<ReservationScreen> {
   final items = List<DateTime>.generate(15, (index) {
     return DateTime.utc(
       DateTime.now().year,
@@ -44,7 +43,7 @@ class _ReservationPageState extends State<ReservationPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.white,
         title: const Text(
-          'Select Seats',
+          "Select Seats",
           style: TextStyle(
             fontSize: 15,
             color: Colors.white,
@@ -56,95 +55,57 @@ class _ReservationPageState extends State<ReservationPage> {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: SizedBox(
-              height: 60,
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: -5,
-                    width: MediaQuery.of(context).size.width - 60,
-                    child: ClipPath(
-                      clipper: Clip2(),
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 70,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              buttonColor.withOpacity(0.3),
-                              Colors.transparent
-                            ],
-                            stops: const [0.35, 1.0],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: -10,
-                    width: MediaQuery.of(context).size.width - 60,
-                    child: ClipPath(
-                      clipper: Clip(),
-                      child: Container(
-                        height: 50,
-                        width: MediaQuery.of(context).size.width,
-                        color: buttonColor,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+          wlecomeBorder(context),
           const SizedBox(height: 20),
+          // for movie seat
           Column(
             children: [
-              ...List.generate(numRow.length, (colIndex) {
-                int numCol =
-                    colIndex == 0 || colIndex == numRow.length - 1 ? 6 : 8;
-                return Padding(
-                  padding: EdgeInsets.only(
-                    bottom: colIndex == numRow.length - 1 ? 0 : 10,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...List.generate(numCol, (rowIndex) {
-                        String seatNum = '${numRow[colIndex]}${rowIndex + 1}';
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              if (selectedSeats.contains(seatNum)) {
-                                selectedSeats.remove(seatNum);
-                              } else if (!reservedSeats.contains(seatNum)) {
-                                selectedSeats.add(seatNum);
-                              }
-                            });
-                          },
-                          child: Container(
-                            height: 30,
-                            width: 30,
-                            margin: EdgeInsets.only(
-                                right: rowIndex == (numCol / 2) - 1 ? 30 : 10),
-                            decoration: BoxDecoration(
-                              color: reservedSeats.contains(seatNum)
-                                  ? Colors.white
-                                  : selectedSeats.contains(seatNum)
-                                      ? buttonColor
-                                      : grey,
-                              borderRadius: BorderRadius.circular(7.5),
+              ...List.generate(
+                numRow.length,
+                (colIndex) {
+                  int numCol =
+                      colIndex == 0 || colIndex == numRow.length - 1 ? 6 : 8;
+                  return Padding(
+                    padding: EdgeInsets.only(
+                      bottom: colIndex == numRow.length - 1 ? 0 : 10,
+                    ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ...List.generate(numCol, (rowIndex) {
+                          String seatNum = '${numRow[colIndex]}${rowIndex + 1}';
+                          return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (selectedSeats.contains(seatNum)) {
+                                  selectedSeats.remove(seatNum);
+                                } else if (!reservedSeats.contains(seatNum)) {
+                                  selectedSeats.add(seatNum);
+                                }
+                              });
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              margin: EdgeInsets.only(
+                                  right:
+                                      rowIndex == (numCol / 2) - 1 ? 30 : 10),
+                              decoration: BoxDecoration(
+                                color: reservedSeats.contains(seatNum)
+                                    ? Colors.white
+                                    : selectedSeats.contains(seatNum)
+                                        ? buttonColor
+                                        : grey,
+                                borderRadius: BorderRadius.circular(7.5),
+                              ),
                             ),
-                          ),
-                        );
-                      })
-                    ],
-                  ),
-                );
-              })
+                          );
+                        })
+                      ],
+                    ),
+                  );
+                },
+              ),
             ],
           ),
           const SizedBox(height: 30),
@@ -372,9 +333,59 @@ class _ReservationPageState extends State<ReservationPage> {
       ),
     );
   }
+
+  Padding wlecomeBorder(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: SizedBox(
+        height: 65,
+        child: Stack(
+          children: [
+            Positioned(
+              top: -5,
+              width: MediaQuery.of(context).size.width - 50,
+              child: ClipPath(
+                clipper: ClipBorder(),
+                child: Container(
+                  width: double.infinity,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        buttonColor.withOpacity(0.3),
+                        Colors.transparent
+                      ],
+                      stops: const [
+                        0.35,
+                        1,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: -10,
+              width: MediaQuery.of(context).size.width - 50,
+              child: ClipPath(
+                clipper: ClipShadow(),
+                child: Container(
+                  height: 50,
+                  width: double.infinity,
+                  color: buttonColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
-class Clip extends CustomClipper<Path> {
+class ClipShadow extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
@@ -390,7 +401,7 @@ class Clip extends CustomClipper<Path> {
   bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }
 
-class Clip2 extends CustomClipper<Path> {
+class ClipBorder extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();

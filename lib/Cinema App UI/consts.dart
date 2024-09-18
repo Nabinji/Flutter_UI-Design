@@ -12,3 +12,4 @@ String formatTime(Duration duration) {
   String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
   return "${digitHours}h ${twoDigitMinutes}m";
 }
+// it display the time in format just like hour  minut and second

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class CategoryItem extends StatelessWidget {
+class MovieInfo extends StatelessWidget {
   final IconData icon;
-  final String category, categoryValue;
-  const CategoryItem({
+  final String name, value;
+  const MovieInfo({
     super.key,
     required this.icon,
-    required this.category,
-    required this.categoryValue,
+    required this.name,
+    required this.value,
   });
 
   @override
@@ -19,9 +19,8 @@ class CategoryItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          width: 1,
-          color: Colors.white,
-          strokeAlign: BorderSide.strokeAlignOutside,
+          width: 1.5,
+          color: Colors.white12,
         ),
       ),
       child: Column(
@@ -42,7 +41,7 @@ class CategoryItem extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            category,
+            name,
             style: TextStyle(
               color: Colors.white.withOpacity(0.6),
               fontSize: 12,
@@ -50,7 +49,7 @@ class CategoryItem extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            categoryValue,
+            value,
             style: const TextStyle(
               color: Colors.white,
               fontSize: 12,

@@ -1,24 +1,24 @@
 class Category {
-  final String emoticon, name;
+  final String emoji, name;
 
-  Category({required this.emoticon, required this.name});
+  Category({required this.emoji, required this.name});
 }
 
 List<Category> categories = [
   Category(
-    emoticon: 'assets/cinema/smiling-face.png',
+    emoji: 'assets/cinema/smiling-face.png',
     name: 'Romance',
   ),
   Category(
-    emoticon: 'assets/cinema/grinning-face.png',
+    emoji: 'assets/cinema/grinning-face.png',
     name: 'Comedy',
   ),
   Category(
-    emoticon: 'assets/cinema/horror.png',
+    emoji: 'assets/cinema/horror.png',
     name: 'Horror',
   ),
   Category(
-    emoticon: 'assets/cinema/face.png',
+    emoji: 'assets/cinema/face.png',
     name: 'Drama',
   )
 ];

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../consts.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/consts.dart';
+
 import 'home_page_cinema.dart';
 
 class CinemaMainScreen extends StatefulWidget {
@@ -17,12 +18,13 @@ class _CinemaMainScreenState extends State<CinemaMainScreen> {
     CupertinoIcons.ticket_fill,
     Icons.person_rounded
   ];
-  int currentPage = 0;
+
+  int currentIndex = 0;
   late final List<Widget> page;
   @override
   void initState() {
-    page = [
-      const HomePageCinema(),
+    page = [ 
+        const HomePageCinema(),
       navBarPage(CupertinoIcons.compass_fill),
       navBarPage(CupertinoIcons.ticket_fill),
       navBarPage(Icons.person_rounded),
@@ -43,29 +45,30 @@ class _CinemaMainScreenState extends State<CinemaMainScreen> {
             (index) => GestureDetector(
               onTap: () {
                 setState(() {
-                  currentPage = index;
+                  currentIndex = index;
                 });
               },
               child: Stack(
                 children: [
                   AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
-                    height: currentPage == index ? 25 : 0,
-                    width: currentPage == index ? 25 : 0,
+                    duration: Duration(milliseconds: 300),
+                    height: currentIndex == index ? 25 : 0,
+                    width: currentIndex == index ? 25 : 0,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.white.withOpacity(0.1),
-                          spreadRadius: currentPage == index ? 10 : 0,
-                          blurRadius: currentPage == index ? 15 : 0,
-                        )
+                            color: Colors.white.withOpacity(0.1),
+                            spreadRadius: currentIndex == index ? 10 : 0,
+                            blurRadius: currentIndex == index ? 15 : 0)
                       ],
                     ),
                   ),
                   Icon(
                     bottomIcons[index],
-                    color: currentPage == index ? Colors.white : Colors.white.withOpacity(.3),
+                    color: currentIndex == index
+                        ? Colors.white
+                        : Colors.white.withOpacity(0.3),
                   ),
                 ],
               ),
@@ -73,13 +76,14 @@ class _CinemaMainScreenState extends State<CinemaMainScreen> {
           ),
         ),
       ),
-      body: page[currentPage],
+      body: page[currentIndex],
     );
   }
-  navBarPage(iconName) {
+
+  navBarPage(iconNmae) {
     return Center(
       child: Icon(
-        iconName,
+        iconNmae,
         size: 100,
         color: Colors.white,
       ),

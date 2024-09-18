@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class SeatStatus extends StatelessWidget {
   final Color color;
   final String status;

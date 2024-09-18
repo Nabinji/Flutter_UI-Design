@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
-import '../consts.dart';
-import '../models/movie_model.dart';
-import '../widgets/category_item.dart';
-import 'reservation_page.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/Widget/movie_info.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/consts.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/models/movie_model.dart';
+import 'package:flutter_ui_design/Cinema%20App%20UI/pages/reservation_screen.dart';
 
-class DetailPage extends StatefulWidget {
+class MovieDetailPage extends StatelessWidget {
   final Movie movie;
-  const DetailPage({super.key, required this.movie});
+  const MovieDetailPage({super.key, required this.movie});
 
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appBackgroundColor,
       appBar: AppBar(
         forceMaterialTransparency: true,
-        elevation: 0,
         foregroundColor: Colors.white,
         backgroundColor: Colors.transparent,
         title: const Text(
-          'Movie Detail',
+          "Movie Detail",
           style: TextStyle(
             fontSize: 16,
             color: Colors.white,
@@ -44,33 +38,34 @@ class _DetailPageState extends State<DetailPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Hero(
-                      tag: widget.movie.title,
+                      tag: movie.poster,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(24),
-                        child: Image.network(widget.movie.poster),
+                        borderRadius: BorderRadius.circular(25),
+                        child: Image.network(
+                          movie.poster,
+                        ),
                       ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        CategoryItem(
+                        MovieInfo(
                           icon: Icons.videocam_rounded,
-                          category: 'Genre',
-                          categoryValue: widget.movie.genre,
+                          name: "Genera",
+                          value: movie.genre,
                         ),
-                        CategoryItem(
-                          icon: Icons.access_time_filled,
-                          category: 'Duration',
-                          categoryValue: formatTime(
-                            Duration(minutes: widget.movie.duration),
+                        MovieInfo(
+                          icon: Icons.timer,
+                          name: "Duration",
+                          value: formatTime(
+                            Duration(minutes: movie.duration),
                           ),
                         ),
-                        CategoryItem(
-                          icon: Icons.videocam_rounded,
-                          category: 'Rating',
-                          categoryValue: '${widget.movie.rating} / 10',
-                        ),
+                        MovieInfo(
+                          icon: Icons.star,
+                          name: "Rating",
+                          value: "${movie.rating}/10",
+                        )
                       ],
                     )
                   ],
@@ -78,7 +73,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
               const SizedBox(height: 20),
               Text(
-                widget.movie.title,
+                movie.title,
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.w800,
@@ -92,7 +87,7 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
               const Text(
-                'Synopsis',
+                "Synopsis",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -101,14 +96,13 @@ class _DetailPageState extends State<DetailPage> {
               ),
               const SizedBox(height: 15),
               Text(
-                widget.movie.synopsis,
+                movie.synopsis,
                 style: const TextStyle(
+                  fontSize: 13,
                   color: Colors.white60,
                   height: 2,
-                  fontSize: 12,
                 ),
               ),
-              const SizedBox(height: 20),
             ],
           ),
         ),
@@ -120,20 +114,19 @@ class _DetailPageState extends State<DetailPage> {
             BoxShadow(
               color: Color(0xff1c1c27),
               blurRadius: 60,
-              spreadRadius: 80
+              spreadRadius: 80,
             ),
           ],
         ),
         child: FloatingActionButton.extended(
           backgroundColor: Colors.transparent,
-          elevation: 0,
           onPressed: () {},
           label: MaterialButton(
             onPressed: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ReservationPage(),
+                  builder: (_) => const ReservationScreen(),
                 ),
               );
             },
@@ -146,7 +139,7 @@ class _DetailPageState extends State<DetailPage> {
               padding: EdgeInsets.symmetric(horizontal: 60),
               child: Center(
                 child: Text(
-                  'Get Reservation',
+                  "Get Reservation",
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w800,
