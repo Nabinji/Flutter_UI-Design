@@ -1,10 +1,11 @@
 class OnBoardModel {
   final String onboardingImage, title, subTitle;
 
-  OnBoardModel(
-      {required this.onboardingImage,
-      required this.title,
-      required this.subTitle});
+  OnBoardModel({
+    required this.onboardingImage,
+    required this.title,
+    required this.subTitle,
+  });
 }
 
 List<OnBoardModel> onBoards = [
