@@ -38,6 +38,8 @@ dependencies:
   video_player: ^2.9.1
   smooth_page_indicator: ^1.2.0+3
   carousel_slider: ^5.0.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
