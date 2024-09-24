@@ -1,32 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveDatabaseFlutter extends StatefulWidget {
   const HiveDatabaseFlutter({super.key});
 
   @override
-  _HiveDatabaseFlutterState createState() => _HiveDatabaseFlutterState();
+  State<HiveDatabaseFlutter> createState() => _HiveDatabaseFlutterState();
 }
 
 class _HiveDatabaseFlutterState extends State<HiveDatabaseFlutter> {
-  // Accessing the Hive box which stores data
-  var peopleBox = Hive.box("MyBox");
-
-  // Controllers to handle text input for name and age
+  var peopleBox = Hive.box("Box");
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
 
   @override
   void dispose() {
-    // Disposing controllers to prevent memory leaks
-    _nameController.dispose();
     _ageController.dispose();
+    _nameController.dispose();
     super.dispose();
   }
 
-  // Function to add or update a person's record in the Hive box
-  void _addOrUpdatePerson({String? key}) {
+  // function for add or update
+  void addOrUpdatePerson({String? key}) {
     // If key is provided, it means we are updating an existing record
     if (key != null) {
       final person = peopleBox.get(key); // Fetch existing data from Hive
@@ -118,9 +113,9 @@ class _HiveDatabaseFlutterState extends State<HiveDatabaseFlutter> {
     );
   }
 
-  // Function to delete a person from the Hive box
-  void _deletePerson(String key) {
-    peopleBox.delete(key); // Deletes the person entry from Hive
+  // for delete operation
+  void deleteOperation(String key) {
+    peopleBox.delete(key);
   }
 
   @override
@@ -128,51 +123,50 @@ class _HiveDatabaseFlutterState extends State<HiveDatabaseFlutter> {
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
-        title: const Text('Flutter Hive Database'),
+        title: const Text("Flutter Hive Database"),
         backgroundColor: Colors.blue[100],
       ),
       body: ValueListenableBuilder(
-        // Listens to changes in the Hive box and rebuilds the UI accordingly
         valueListenable: peopleBox.listenable(),
         builder: (context, box, widget) {
-          // If the box is empty, show a message
           if (box.isEmpty) {
-            return const Center(child: Text('No items added yet.'));
+            return const Center(
+              child: Text("No items added yet."),
+            );
           }
-
-          // Builds a ListView for displaying all entries in the Hive box
           return ListView.builder(
-            itemCount: box.length, // Number of items in the box
+            itemCount: box.length,
             itemBuilder: (context, index) {
-              final key =
-                  box.keyAt(index).toString(); // Get the key for each item
-              final person = box.get(key); // Get the person data for each key
-
+              final key = box.keyAt(index).toString();
+              final items = box.get(key);
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Material(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
                   elevation: 2,
-                  child: ListTile(
-                    title: Text(
-                        person?['name'] ?? 'Unknown'), 
-                    subtitle: Text(
-                        'Age: ${person?['age'] ?? 'N/A'}'), 
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min, // Keeps row width minimal
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.edit),
-                          // On clicking the edit button, show the bottom sheet to update the person
-                          onPressed: () => _addOrUpdatePerson(key: key),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete),
-                          // On clicking the delete button, delete the person
-                          onPressed: () => _deletePerson(key),
-                        ),
-                      ],
+                  borderRadius: BorderRadius.circular(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: ListTile(
+                      title: Text(items?["name"] ?? "Unknown"),
+                      subtitle: Text("Age: ${items?["age"] ?? "Unknown"}"),
+                      trailing: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          IconButton(
+                            onPressed: () => addOrUpdatePerson(key: key),
+                            icon: const Icon(
+                              Icons.edit,
+                            ),
+                          ),
+                          IconButton(
+                            onPressed: () =>deleteOperation(key),
+                            icon: const Icon(
+                              Icons.delete,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -181,12 +175,10 @@ class _HiveDatabaseFlutterState extends State<HiveDatabaseFlutter> {
           );
         },
       ),
-      // Floating action button to add a new person
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         foregroundColor: Colors.white,
-        // Opens the bottom sheet for adding a new person
-        onPressed: () => _addOrUpdatePerson(),
+        onPressed: () => addOrUpdatePerson(),
         child: const Icon(Icons.add),
       ),
     );
