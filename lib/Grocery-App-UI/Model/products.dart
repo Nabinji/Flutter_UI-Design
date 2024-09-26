@@ -9,9 +9,9 @@ List<String> groceryCategories = [
 ];
 
 class Grocery {
-  final String? description, name, image, category;
-  final double? rate, price;
-  final Color? color;
+  final String description, name, image, category;
+  final double rate, price;
+  final Color color;
   final bool isRecent;
 
   Grocery(

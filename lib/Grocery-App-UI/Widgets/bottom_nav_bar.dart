@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../Views/home_screen_grocery.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/Views/home_screen_grocery.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -9,32 +9,29 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int currentMenu = 0;
-
+  int currentIndex = 0;
   final List<Widget> pages = [
     const HomeScreenGrocery(),
-    const Center(child: Text('Data')),
+    const Center(child: Text("Data")),
     const HomeScreenGrocery(),
-    const Center(child: Text('Message')),
-    const Center(child: Text('Profile')),
+    const Center(child: Text("Mail")),
+    const Center(child: Text("Profile")),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[currentMenu],
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
-        currentIndex: currentMenu,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black12,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        iconSize: 30,
-        onTap: (index) {
+        currentIndex: currentIndex,
+        onTap: (value) {
           setState(() {
-            currentMenu = index;
+            currentIndex = value;
           });
         },
         items: [
@@ -43,8 +40,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: '',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.insert_chart,
-            ),
+            icon: Icon(Icons.insert_chart),
             label: '',
           ),
           BottomNavigationBarItem(
@@ -62,14 +58,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
             label: '',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mail,
-            ),
+            icon: Icon(Icons.mail),
             label: '',
           ),
           const BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline,
-            ),
+            icon: Icon(Icons.person_outline),
             label: '',
           ),
         ],

@@ -1,85 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_ui_design/Grocery-App-UI/Model/products.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/Utils/constants.dart';
 import 'package:readmore/readmore.dart';
 
-import '../constants.dart';
-
-class ProductDetailPage extends StatefulWidget {
+class ProductDetailScreen extends StatefulWidget {
   final Grocery product;
-  const ProductDetailPage({super.key, required this.product});
+  const ProductDetailScreen({super.key, required this.product});
 
   @override
-  State<ProductDetailPage> createState() => _ProductDetailPageState();
+  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
 }
 
-class ClipPathDetail extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, size.height - 50);
-    path.quadraticBezierTo(
-      size.width / 2,
-      size.height + 50,
-      size.width,
-      size.height - 50,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
-
-class _ProductDetailPageState extends State<ProductDetailPage> {
+class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int quantity = 1;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: backgroundColor,
-      appBar: AppBar(
-        backgroundColor: widget.product.color!.withOpacity(0.15),
-        leadingWidth: 80,
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(left: 20),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-            ),
-            child: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                color: widget.product.color,
-              ),
-            ),
-          ),
-          const Spacer(),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-            ),
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.shopping_cart_outlined,
-                color: widget.product.color!,
-              ),
-            ),
-          ),
-          const SizedBox(width: 20),
-        ],
-      ),
+      appBar: headerParts(context),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // for image  and its background
+            // for image and ites background
             Stack(
               children: [
                 const SizedBox(height: 350),
@@ -95,8 +39,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         BoxShadow(
                           blurRadius: 12,
                           spreadRadius: 20,
-                          color: widget.product.color!.withOpacity(0.2),
-                        )
+                          color: widget.product.color.withOpacity(0.1),
+                        ),
                       ],
                     ),
                   ),
@@ -106,7 +50,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   child: Container(
                     height: 300,
                     width: size.width,
-                    color: widget.product.color!.withOpacity(0.15),
+                    color: widget.product.color.withOpacity(0.15),
                   ),
                 ),
                 Positioned(
@@ -114,9 +58,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   left: 20,
                   right: 20,
                   child: Hero(
-                    tag: widget.product.image!,
+                    tag: widget.product.image,
                     child: Image.asset(
-                      widget.product.image!,
+                      widget.product.image,
                       width: size.width,
                       height: 400,
                     ),
@@ -131,7 +75,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    widget.product.name!,
+                    widget.product.name,
                     style: const TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.w900,
@@ -140,7 +84,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                   Row(
                     children: [
                       RatingBar.builder(
-                        initialRating: widget.product.rate!,
+                        initialRating: widget.product.rate,
                         itemSize: 30,
                         allowHalfRating: true,
                         itemBuilder: (context, index) => const Icon(
@@ -150,19 +94,22 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         onRatingUpdate: (rating) {},
                       ),
                       Text(
-                        ' (${widget.product.rate!})',
+                        " (${widget.product.rate})",
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.grey,
                         ),
                       ),
                       const Spacer(),
+                      // for quantity increment decrement
                       Row(
                         children: [
                           GestureDetector(
-                            onTap: () => setState(
-                              () => quantity > 1 ? quantity-- : null,
-                            ),
+                            onTap: () {
+                              setState(
+                                () => quantity > 1 ? quantity-- : null,
+                              );
+                            },
                             child: Container(
                               height: 40,
                               width: 40,
@@ -191,11 +138,9 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                           ),
                           const SizedBox(width: 10),
                           GestureDetector(
-                            onTap: () => setState(
-                              () => setState(
-                                () => quantity++,
-                              ),
-                            ),
+                            onTap: () {
+                              setState(() => quantity++);
+                            },
                             child: Container(
                               height: 40,
                               width: 40,
@@ -215,25 +160,26 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ),
                           ),
                         ],
-                      ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    'Description',
+                    "Description",
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 20),
+                  // to used redmoretext, first you need to add a package
                   ReadMoreText(
-                    "${widget.product.name!} ${widget.product.description!}",
+                    "${widget.product.name} ${widget.product.description}",
                     style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w500,
                       height: 1.5,
-                      color: Colors.black,
+                      color: Colors.black26,
                     ),
                     trimLength: 110,
                     trimCollapsedText: "Read More",
@@ -272,7 +218,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                         ),
                       ],
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -283,23 +229,30 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
         height: 100,
         color: Colors.white,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Price',
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
+                    "Price",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey,
+                    ),
                   ),
                   Text(
-                    '\$${widget.product.price!.toStringAsFixed(2)}',
+                    "\$${widget.product.price.toStringAsFixed(2)}",
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -307,18 +260,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
             TextButton(
               onPressed: () {},
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 40,
+                ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   gradient: gradientColor,
                 ),
                 child: const Text(
-                  'Add to Cart',
+                  "Add to Cart",
                   style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
@@ -327,4 +283,64 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       ),
     );
   }
+
+  AppBar headerParts(BuildContext context) {
+    return AppBar(
+      leadingWidth: 80,
+      backgroundColor: widget.product.color.withOpacity(0.15),
+      actions: [
+        Container(
+          margin: const EdgeInsets.only(left: 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
+          child: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: widget.product.color,
+            ),
+          ),
+        ),
+        const Spacer(),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.white,
+          ),
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.shopping_cart_outlined,
+              color: widget.product.color,
+            ),
+          ),
+        ),
+        const SizedBox(width: 20),
+      ],
+    );
+  }
+}
+
+class ClipPathDetail extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(
+      size.width / 2,
+      size.height + 50,
+      size.width,
+      size.height - 50,
+    );
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

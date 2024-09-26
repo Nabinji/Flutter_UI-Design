@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../Widgets/bottom_nav_bar.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/Utils/constants.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/Widgets/bottom_nav_bar.dart';
 
-class GroceryOnBoard extends StatefulWidget {
+class GroceryOnBoard extends StatelessWidget {
   const GroceryOnBoard({super.key});
 
-  @override
-  State<GroceryOnBoard> createState() => _OnBoardState();
-}
-
-class _OnBoardState extends State<GroceryOnBoard> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -21,12 +16,14 @@ class _OnBoardState extends State<GroceryOnBoard> {
             clipper: ClipPathOnBoard(),
             child: Container(
               color: onboardbackground,
+
+              // we will do this curve later
               width: size.width,
               height: size.height * 0.6,
               child: Padding(
                 padding: const EdgeInsets.only(top: 45),
                 child: Image.asset(
-                  'assets/grocery/onboarding_profile.png',
+                  "assets/grocery/onboarding_profile.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -38,8 +35,7 @@ class _OnBoardState extends State<GroceryOnBoard> {
               children: [
                 const SizedBox(height: 30),
                 const Text(
-                  'Buy Groceries\nEasily With Us',
-                  textAlign: TextAlign.center,
+                  "Buy Groceries\nEasilly With Us",
                   style: TextStyle(
                     fontSize: 40,
                     height: 1.3,
@@ -48,8 +44,7 @@ class _OnBoardState extends State<GroceryOnBoard> {
                 ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Listen podcast and open your\nworld with this application',
-                  textAlign: TextAlign.center,
+                  "Listen podcast and open your\nworld with this application",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
@@ -59,28 +54,31 @@ class _OnBoardState extends State<GroceryOnBoard> {
                 const SizedBox(height: 30),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BottomNavBar(),
-                      ),
-                    );
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const BottomNavBar(),
+                        ),
+                        (route) => false);
                   },
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      vertical: 25,
                       horizontal: 60,
+                      vertical: 25,
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
+                      borderRadius: BorderRadius.circular(
+                        50,
+                      ),
                       gradient: gradientColor,
                     ),
                     child: const Text(
-                      'Get Started',
+                      "Get Started",
                       style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -100,7 +98,7 @@ class ClipPathOnBoard extends CustomClipper<Path> {
     path.lineTo(0, size.height);
     path.quadraticBezierTo(
       size.width / 2,
-      size.height -70,
+      size.height - 70,
       size.width,
       size.height,
     );
