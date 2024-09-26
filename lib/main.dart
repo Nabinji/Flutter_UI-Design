@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Grocery-App-UI/grocery_onboarding.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/Views/grocery_onboarding.dart';
 
 void main() {
   runApp(const MyApp());
