@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food%20Delivery%20App/pages/onboard_page.dart';
+import 'package:flutter_ui_design/Grocery-App-UI/grocery_onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyOnBoardPage(),
+      home: GroceryOnBoard(),
     );
   }
 }
