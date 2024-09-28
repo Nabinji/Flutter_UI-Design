@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Grocery-App-UI/Views/grocery_onboarding.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/pages/onboard_travel.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GroceryOnBoard(),
+      home: TravelOnBoardingScreen(),
     );
   }
 }
