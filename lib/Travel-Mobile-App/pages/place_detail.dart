@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Travel-Mobile-App/const.dart';
-import '../models/destination_model.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/models/travel_model.dart';
 
 class PlaceDetailScreen extends StatefulWidget {
-  final Destination destination;
-  const PlaceDetailScreen({
-    super.key,
-    required this.destination,
-  });
+  final TravelDestination destination;
+  const PlaceDetailScreen({super.key, required this.destination});
 
   @override
   State<PlaceDetailScreen> createState() => _PlaceDetailScreenState();
@@ -22,7 +19,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
       backgroundColor: kBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leadingWidth: 65,
+        leadingWidth: 64,
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
@@ -37,14 +34,13 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
               ),
               child: const Icon(
                 Icons.arrow_back_ios_new,
-                size: 30,
               ),
             ),
           ),
         ),
         centerTitle: true,
         title: const Text(
-          'Detail Place',
+          "Detali Page",
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
@@ -60,7 +56,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
               ),
             ),
             child: const Icon(
-              Icons.bookmark_outline_rounded,
+              Icons.bookmark_outline,
               size: 30,
             ),
           ),
@@ -68,23 +64,23 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+        padding: const EdgeInsets.all(15),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.58,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  color: Colors.white,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black38,
-                      offset: Offset(0, 5),
-                      spreadRadius: 1,
-                      blurRadius: 7,
-                    )
-                  ]),
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black38,
+                    offset: Offset(0, 5),
+                    blurRadius: 7,
+                    spreadRadius: 1,
+                  ),
+                ],
+              ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Stack(
@@ -99,8 +95,8 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                       children: List.generate(
                         widget.destination.image!.length,
                         (index) => Image.network(
-                          widget.destination.image![index],
                           fit: BoxFit.cover,
+                          widget.destination.image![index],
                         ),
                       ),
                     ),
@@ -301,7 +297,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
                             ),
                           ),
                           const Center(
-                            child: Text('Review'),
+                            child: Text('No Review yet'),
                           ),
                         ],
                       ),
@@ -313,7 +309,7 @@ class _PlaceDetailScreenState extends State<PlaceDetailScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
+   bottomNavigationBar: Container(
         height: 110,
         decoration: const BoxDecoration(
           color: Colors.white,

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Travel-Mobile-App/const.dart';
 import 'package:flutter_ui_design/Travel-Mobile-App/models/onboard_model.dart';
-
-import 'travel_home_screen.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/pages/travel_home_screen.dart';
 
 class TravelOnBoardingScreen extends StatefulWidget {
   const TravelOnBoardingScreen({super.key});
@@ -32,10 +31,12 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
       body: Stack(
         children: [
           PageView.builder(
-            onPageChanged: (value) => setState(
-              () => currentIndex = value,
-            ),
             itemCount: onboarding.length,
+            onPageChanged: (value) {
+              setState(() {
+                currentIndex = value;
+              });
+            },
             itemBuilder: (context, index) {
               return Image.network(
                 onboarding[index].image,
@@ -57,7 +58,7 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const TravelHomeScreen(),
+                              builder: (_) => const TravelHomeScreen(),
                             ),
                             (route) => false);
                       },
@@ -67,8 +68,8 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                             : false,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 6,
                             horizontal: 15,
+                            vertical: 7,
                           ),
                           decoration: BoxDecoration(
                             border: Border.all(
@@ -77,11 +78,11 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Text(
-                            'Skip',
+                            "Skip",
                             style: TextStyle(
-                              color: Colors.white,
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -95,14 +96,14 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                           onboarding[currentIndex].name,
                           style: const TextStyle(
                             fontSize: 70,
-                            height: 1,
                             color: Colors.white,
                             fontWeight: FontWeight.w400,
+                            height: 1,
                           ),
                         ),
                         const SizedBox(height: 20),
                         const Text(
-                          'We Travelin are ready to help you on\nvacation around Nepal',
+                          "We Travelin are ready to help you on\nvacation around Nepal",
                           style: TextStyle(
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
@@ -110,9 +111,9 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                           ),
                         )
                       ],
-                    ),
+                    )
                   ],
-                ),
+                )
               ],
             ),
           ),
@@ -124,16 +125,17 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(onboarding.length, dotIndicator),
+                    children: List.generate(
+                      onboarding.length,
+                      dotIndicator,
+                    ),
                   ),
                   const SizedBox(height: 20),
                   ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(25),
-                    ),
+                    borderRadius: BorderRadius.circular(35),
                     child: Container(
-                      color: Colors.white,
                       padding: const EdgeInsets.all(35),
+                      color: Colors.white,
                       child: Column(
                         children: [
                           GestureDetector(
@@ -141,7 +143,7 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const TravelHomeScreen(),
+                                    builder: (_) => const TravelHomeScreen(),
                                   ),
                                   (route) => false);
                             },
@@ -151,11 +153,11 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                                 borderRadius: BorderRadius.circular(15),
                                 boxShadow: const [
                                   BoxShadow(
-                                    offset: Offset(0, 5),
                                     color: Colors.black12,
+                                    offset: Offset(0, 5),
                                     spreadRadius: 15,
                                     blurRadius: 15,
-                                  )
+                                  ),
                                 ],
                                 color: kButtonColor,
                               ),
@@ -187,20 +189,19 @@ class _TravelOnBoardingScreenState extends State<TravelOnBoardingScreen> {
                             TextSpan(
                               children: [
                                 TextSpan(
-                                  text: 'already have account? ',
+                                  text: "already have account? ",
                                   style: TextStyle(
-                                    color: kButtonColor,
                                     fontSize: 16,
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'Login',
+                                  text: "Login",
                                   style: TextStyle(
-                                    fontSize: 16,
                                     color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),

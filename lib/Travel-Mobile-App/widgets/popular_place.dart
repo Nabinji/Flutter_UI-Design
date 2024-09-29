@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import '../models/destination_model.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/models/travel_model.dart';
 
 class PopularPlace extends StatelessWidget {
-  final Destination destination;
-  const PopularPlace({
-    super.key,
-    required this.destination,
-  });
+  final TravelDestination destination;
+  const PopularPlace({super.key, required this.destination});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +34,10 @@ class PopularPlace extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
-                image: NetworkImage(destination.image![0]),
                 fit: BoxFit.cover,
+                image: NetworkImage(
+                  destination.image![0],
+                ),
               ),
             ),
             child: Column(
@@ -75,21 +74,20 @@ class PopularPlace extends StatelessWidget {
                                 Text(
                                   destination.location,
                                   style: const TextStyle(
-                                    fontSize: 12,
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w500,
+                                    fontSize: 18,
                                   ),
-                                ),
+                                )
                               ],
-                            ),
+                            )
                           ],
                         ),
                         Row(
                           children: [
-                             Icon(
+                            Icon(
                               Icons.star_rounded,
-                              color: Colors.amber[800],
                               size: 22,
+                              color: Colors.amber[800],
                             ),
                             const SizedBox(width: 5),
                             Text(
@@ -99,7 +97,7 @@ class PopularPlace extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
                               ),
-                            ),
+                            )
                           ],
                         )
                       ],

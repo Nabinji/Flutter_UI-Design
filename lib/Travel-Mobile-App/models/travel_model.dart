@@ -2,13 +2,13 @@ import 'dart:math';
 
 Random random = Random();
 
-class Destination {
+class TravelDestination {
   final int id, price, review;
   final List<String>? image;
   final String name, description, category, location;
   final double rate;
 
-  Destination({
+  TravelDestination({
     required this.name,
     required this.price,
     required this.id,
@@ -21,8 +21,8 @@ class Destination {
   });
 }
 
-List<Destination> destinations = [
-  Destination(
+List<TravelDestination> myDestination = [
+  TravelDestination(
     id: 2,
     name: "Mt.Everest",
     category: 'popular',
@@ -38,7 +38,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.9,
   ),
-  Destination(
+  TravelDestination(
     id: 7,
     price: 100,
     name: "Pashupatinath Temple",
@@ -54,7 +54,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.8,
   ),
-  Destination(
+  TravelDestination(
     id: 3,
     name: "Lubini Temple",
     review: random.nextInt(300) + 25,
@@ -70,7 +70,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.9,
   ),
-  Destination(
+  TravelDestination(
     id: 8,
     name: "Rara Lake",
     review: random.nextInt(300) + 25,
@@ -85,7 +85,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.5,
   ),
-  Destination(
+  TravelDestination(
     id: 1,
     name: "Mustang",
     review: random.nextInt(300) + 25,
@@ -101,7 +101,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.6,
   ),
-  Destination(
+  TravelDestination(
     id: 9,
     name: "Karnali River",
     review: random.nextInt(300) + 25,
@@ -117,7 +117,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.7,
   ),
-  Destination(
+  TravelDestination(
     id: 12,
     name: "Mountain Range",
     category: "recomend",
@@ -133,7 +133,7 @@ List<Destination> destinations = [
     description: description,
     rate: 4.8,
   ),
-  Destination(
+  TravelDestination(
     id: 14,
     name: "Kathmandu Durbar ",
     review: random.nextInt(300) + 25,
@@ -150,4 +150,4 @@ List<Destination> destinations = [
   ),
 ];
 const description =
-    'Travel places offer a wide array of experiences, each with its own unique charm and appeal. From stunning natural landscapes to historic landmarks, there is something for every traveler. Coastal destinations like tropical beaches invite relaxation with crystal-clear waters, while mountainous regions offer adventurous hiking trails and breathtaking views.';
+    'Travel places offer a wide array of experiences, each with its own unique charm and appeal. From stunning natural landscapes to historic landmarks, there is something for every traveler. Coastal TravelDestinations like tropical beaches invite relaxation with crystal-clear waters, while mountainous regions offer adventurous hiking trails and breathtaking views.';

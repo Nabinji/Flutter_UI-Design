@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Travel-Mobile-App/const.dart';
-import '../models/destination_model.dart';
-import '../widgets/popular_place.dart';
-import '../widgets/recomendate.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/pages/place_detail.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/widgets/popular_place.dart';
+import 'package:flutter_ui_design/Travel-Mobile-App/widgets/recomendate.dart';
 import 'package:iconsax/iconsax.dart';
-import 'place_detail.dart';
+
+import '../models/travel_model.dart'; // add this package first for icon
 
 class TravelHomeScreen extends StatefulWidget {
   const TravelHomeScreen({super.key});
@@ -20,75 +21,21 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
     Iconsax.search_normal,
     Icons.confirmation_number_outlined,
     Icons.bookmark_outline,
-    Icons.person_outline
+    Icons.person_outline,
   ];
-  List<Destination> popular =
-      destinations.where((element) => element.category == 'popular').toList();
-  List<Destination> recomend =
-      destinations.where((element) => element.category == 'recomend').toList();
+  // for popular ites(filter the popular items only from model)
+  // this means only display those data whose category is popular
+  List<TravelDestination> popular =
+      myDestination.where((element) => element.category == "popular").toList();
+  // this means only display those data whose category is recomend
+  List<TravelDestination> recomendate =
+      myDestination.where((element) => element.category == "recomend").toList();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kBackgroundColor,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leadingWidth: 180,
-        leading: const Row(
-          children: [
-            SizedBox(width: 15),
-            Icon(
-              Iconsax.location,
-              color: Colors.black,
-            ),
-            SizedBox(width: 5),
-            Text(
-              'Jawa Timur',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Icon(
-              Icons.keyboard_arrow_down,
-              size: 30,
-              color: Colors.black26,
-            )
-          ],
-        ),
-        actions: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              border: Border.all(color: Colors.black12),
-            ),
-            padding: const EdgeInsets.all(7),
-            child: Stack(
-              children: [
-                const Icon(
-                  Iconsax.notification,
-                  color: Colors.black,
-                  size: 30,
-                ),
-                Positioned(
-                  top: 5,
-                  right: 5,
-                  child: Container(
-                    height: 7,
-                    width: 7,
-                    decoration: const BoxDecoration(
-                      color: Colors.red,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          const SizedBox(width: 15),
-        ],
-      ),
+      appBar: headerParts(),
       body: Column(
         children: [
           const SizedBox(height: 20),
@@ -98,20 +45,20 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Popular place',
+                  "Popular place",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black,
                     fontWeight: FontWeight.w600,
+                    color: Colors.black,
                   ),
                 ),
                 Text(
-                  'See all',
+                  "See all",
                   style: TextStyle(
                     fontSize: 14,
                     color: blueTextColor,
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -125,11 +72,11 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
                 (index) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: GestureDetector(
-                    onTap: () {
+                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PlaceDetailScreen(
+                          builder: (_) => PlaceDetailScreen(
                             destination: popular[index],
                           ),
                         ),
@@ -149,20 +96,20 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Recomendation for you',
+                  "Recomendation for you",
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'See all',
+                  "See all",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     color: blueTextColor,
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -172,7 +119,7 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 children: List.generate(
-                  recomend.length,
+                  recomendate.length,
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 15),
                     child: GestureDetector(
@@ -180,14 +127,14 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PlaceDetailScreen(
-                              destination: recomend[index],
+                            builder: (_) => PlaceDetailScreen(
+                              destination: recomendate[index],
                             ),
                           ),
                         );
                       },
                       child: Recomendate(
-                        destination: recomend[index],
+                        destination: recomendate[index],
                       ),
                     ),
                   ),
@@ -206,15 +153,15 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
                     children: [
                       Container(
                         padding: const EdgeInsets.symmetric(
+                          horizontal: 15,
                           vertical: 22,
-                          horizontal: 5,
                         ),
                         decoration: BoxDecoration(
                           color: kButtonColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: List.generate(
                             icons.length,
                             (index) => GestureDetector(
@@ -240,9 +187,69 @@ class _TravelHomeScreenState extends State<TravelHomeScreen> {
                 ),
               ],
             ),
+          )
+        ],
+      ),
+    );
+  }
+
+  AppBar headerParts() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.white,
+      leadingWidth: 180,
+      leading: const Row(
+        children: [
+          SizedBox(width: 15),
+          Icon(
+            Iconsax.location,
+            color: Colors.black,
+          ),
+          SizedBox(width: 5),
+          Text(
+            "Jawa Timur",
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 18,
+              color: Colors.black,
+            ),
+          ),
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: 30,
+            color: Colors.black26,
           ),
         ],
       ),
+      actions: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: Colors.black12,
+            ),
+          ),
+          padding: const EdgeInsets.all(7),
+          child: const Stack(
+            children: [
+              Icon(
+                Iconsax.notification,
+                color: Colors.black,
+                size: 30,
+              ),
+              Positioned(
+                top: 5,
+                right: 5,
+                child: CircleAvatar(
+                  radius: 5,
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 15),
+      ],
     );
   }
 }
