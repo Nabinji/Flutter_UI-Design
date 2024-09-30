@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Football%20Live%20Score%20App/constants.dart';
 
-import '../constants.dart';
-
-class StatsChart extends StatelessWidget {
+class LiveMatchStats extends StatelessWidget {
   final int homeStats, awayStats;
   final String title;
-  final double homeValue;
-  final double awayValue;
-
   final bool isHomeWinner;
-  const StatsChart({
-    super.key,
-    required this.homeStats,
-    required this.awayStats,
-    required this.title,
-    required this.homeValue,
-    required this.awayValue,
-    required this.isHomeWinner,
-  });
+  final double homeValue, awayValue;
+  const LiveMatchStats(
+      {super.key,
+      required this.homeStats,
+      required this.awayStats,
+      required this.title,
+      required this.homeValue,
+      required this.awayValue,
+      required this.isHomeWinner});
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +29,7 @@ class StatsChart extends StatelessWidget {
                 style: TextStyle(
                   color: isHomeWinner ? kprimaryColor : ksecondryColor,
                   fontSize: 16,
+                  letterSpacing: -1,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -47,7 +44,8 @@ class StatsChart extends StatelessWidget {
                 awayStats.toString(),
                 style: TextStyle(
                   color: !isHomeWinner ? kprimaryColor : ksecondryColor,
-                  fontSize: 16,letterSpacing: -1,
+                  fontSize: 16,
+                  letterSpacing: -1,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -82,7 +80,7 @@ class StatsChart extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );

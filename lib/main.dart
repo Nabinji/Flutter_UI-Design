@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Football%20Live%20Score%20App/screens/main_screen.dart';
+import 'package:flutter_ui_design/Football%20Live%20Score%20App/Screens/main_screen.dart';
 
 
 void main() {

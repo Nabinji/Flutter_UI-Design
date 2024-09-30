@@ -14,7 +14,8 @@ class LiveMatch {
   final Color textColors;
   final DecorationImage backgroundImage;
   bool onTheWinner;
-
+// i have create a simple data model for this video
+// all the source code link is  in description
   LiveMatch({
     required this.awayGoal,
     required this.homeGoal,
