@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Travel-Mobile-App/pages/onboard_travel.dart';
+import 'package:flutter_ui_design/Football%20Live%20Score%20App/screens/main_screen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TravelOnBoardingScreen(),
+      home: MainScreen(),
     );
   }
 }
