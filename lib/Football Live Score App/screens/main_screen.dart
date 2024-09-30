@@ -3,14 +3,14 @@ import 'package:iconsax/iconsax.dart';
 import '../constants.dart';
 import 'home_screen.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class AppMainScreen extends StatefulWidget {
+  const AppMainScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<AppMainScreen> createState() => _AppMainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _AppMainScreenState extends State<AppMainScreen> {
   int currentTab = 0;
   final List<Widget> screens = [
     const HomeScreen(),
