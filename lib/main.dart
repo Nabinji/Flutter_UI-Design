@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Football%20Live%20Score%20App/Screens/main_screen.dart';
+import 'package:flutter_ui_design/Plant-Shop-App/screens/onboarding_screen.dart';
 
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppMainScreen(),
+      home: OnBoardingScreen(),
     );
   }
 }
