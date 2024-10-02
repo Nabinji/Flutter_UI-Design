@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
-import '../models/plant_model.dart';
+import 'package:flutter_ui_design/Plant-Shop-App/constants.dart';
+import 'package:flutter_ui_design/Plant-Shop-App/models/plant_model.dart';
 
-class PlantDetailsScreen extends StatefulWidget {
+class PlantDetailScreen extends StatefulWidget {
   final Plant plant;
-  const PlantDetailsScreen({super.key, required this.plant});
+  const PlantDetailScreen({super.key, required this.plant});
 
   @override
-  State<PlantDetailsScreen> createState() => _PlantDetailsScreenState();
+  State<PlantDetailScreen> createState() => _PlantDetailScreenState();
 }
 
-class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
-  int currentPhoto = 0;
-
+class _PlantDetailScreenState extends State<PlantDetailScreen> {
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +21,9 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.shopping_cart_outlined),
+            icon: const Icon(
+              Icons.shopping_cart_outlined,
+            ),
           ),
         ],
       ),
@@ -39,10 +40,13 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
                     scrollDirection: Axis.vertical,
                     itemCount: 3,
                     onPageChanged: (value) => setState(() {
-                      currentPhoto = value;
+                      currentIndex = value;
                     }),
-                    itemBuilder: (context, index) => Image.asset(
-                      widget.plant.image,
+                    itemBuilder: (context, index) => Hero(
+                      tag:widget.plant.image,
+                      child: Image.asset(
+                        widget.plant.image,
+                      ),
                     ),
                   ),
                 ),
@@ -56,10 +60,10 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
                         duration: const Duration(milliseconds: 200),
                         margin: const EdgeInsets.only(bottom: 5),
                         width: 7,
-                        height: index == currentPhoto ? 20 : 7,
+                        height: index == currentIndex ? 20 : 7,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          color: index == currentPhoto
+                          color: index == currentIndex
                               ? primaryColor
                               : Colors.grey,
                         ),
@@ -69,6 +73,7 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: Text(
@@ -83,12 +88,12 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
-                "Plants make your life with minimal and happy love the plants more and enjoy life.",
+                "Plansts make your we with minimal and nappy love the plants more and enjoy life.",
                 style: TextStyle(
                   fontSize: 14,
-                  letterSpacing: -.5,
                   fontWeight: FontWeight.w600,
                   color: Colors.black54,
+                  letterSpacing: -.5,
                 ),
               ),
             ),
@@ -98,10 +103,15 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
       bottomSheet: Container(
         height: 270,
         width: double.infinity,
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40,
+          vertical: 20,
+        ),
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
           color: primaryColor,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(40),
+          ),
         ),
         child: Column(
           children: [
@@ -136,28 +146,25 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
                       "Total Price",
                       style: TextStyle(
                         fontSize: 18,
-                        letterSpacing: -1,
                         fontWeight: FontWeight.w500,
                         color: Colors.white,
+                        letterSpacing: -1,
                       ),
                     ),
                     Text(
                       "\$${widget.plant.price}",
                       style: const TextStyle(
-                        height: 1,
                         fontSize: 20,
-                        letterSpacing: -1,
                         fontWeight: FontWeight.w800,
                         color: Colors.white,
+                        height: 1,
+                        letterSpacing: -1,
                       ),
                     ),
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 30,
-                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
                   decoration: BoxDecoration(
                     color: cartButtonColor,
                     borderRadius: BorderRadius.circular(30),
@@ -179,32 +186,30 @@ class _PlantDetailsScreenState extends State<PlantDetailsScreen> {
     );
   }
 
-  Column plantsInfo(icon, name, value) {
-    return Column(
-      children: [
-        Icon(
-          icon,
-          size: 45,
-          color: Colors.white,
-        ),
-        const SizedBox(height: 5),
-        Text(
-          name,
-          style: const TextStyle(
-            fontSize: 15,letterSpacing: -1,
-            fontWeight: FontWeight.w800,
+  Column plantsInfo(icon, name, value) => Column(
+        children: [
+          Icon(
+            icon,
+            size: 45,
             color: Colors.white,
           ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          value,
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.grey.shade200,
+          const SizedBox(height: 4),
+          Text(
+            name,
+            style: const TextStyle(
+              fontSize: 15,
+              fontWeight: FontWeight.w800,
+              color: Colors.white,
+              letterSpacing: -1,
+            ),
           ),
-        )
-      ],
-    );
-  }
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.grey.shade200,
+            ),
+          )
+        ],
+      );
 }
