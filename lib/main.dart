@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Plant-Shop-App/screens/onboarding_screen.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import 'To Do App/todo_screen.dart';
 
-void main() {
+void main() async {
+  // Ensure all widgets are initialized before starting the app
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Hive in the Flutter environment
+  await Hive.initFlutter();
+  // Open a Hive box to store the todo list
+  await Hive.openBox("todos");
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  // Root widget of the app
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: OnBoardingScreen(),
+      home: TodoScreen(),
     );
   }
 }
+
 
 
 
