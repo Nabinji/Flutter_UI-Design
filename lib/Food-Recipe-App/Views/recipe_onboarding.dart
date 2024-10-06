@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/recipe_home.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Views/recipe_home.dart';
 import 'package:flutter_ui_design/Grocery-App-UI/Utils/constants.dart';
 
 class RecipeOnBoardingScreen extends StatefulWidget {

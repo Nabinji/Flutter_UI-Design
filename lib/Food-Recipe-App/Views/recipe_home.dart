@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/colors.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/detail_itmems_screen.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/models/categories_recipe.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/models/recipe_model.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Colors/colors.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Views/detail_itmems_screen.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Models/categories_recipe.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Models/recipe_model.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RecipeHomeScreen extends StatefulWidget {

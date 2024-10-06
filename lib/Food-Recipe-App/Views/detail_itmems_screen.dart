@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/models/ingredients.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/models/recipe_model.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Models/ingredients.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Models/recipe_model.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
