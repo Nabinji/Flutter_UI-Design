@@ -45,6 +45,7 @@ dependencies:
   iconsax: ^0.0.8
   flutter_staggered_grid_view: ^0.7.0
   flutter_slidable: ^3.1.1
+  percent_indicator: ^4.2.3
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +80,7 @@ flutter:
     - assets/grocery/
     - assets/football/
     - assets/plant-shop/
+    - assets/food-recipe/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
