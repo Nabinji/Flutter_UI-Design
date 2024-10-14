@@ -5,30 +5,15 @@ import 'package:flutter_ui_design/Food-Recipe-App/Models/recipe_model.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class DetailItmemsScreen extends StatefulWidget {
+class ItemsDetailsScreens extends StatefulWidget {
   final RecipeItems recipeItems;
-  const DetailItmemsScreen({super.key, required this.recipeItems});
+  const ItemsDetailsScreens({super.key, required this.recipeItems});
 
   @override
-  State<DetailItmemsScreen> createState() => _DetailItmemsScreenState();
+  State<ItemsDetailsScreens> createState() => _ItemsDetailsScreensState();
 }
 
-class ClipPathClass extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    var path = Path();
-    path.lineTo(0, size.height);
-    path.lineTo(size.width, size.height);
-    path.quadraticBezierTo(0, size.height, 0, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
-}
-
-class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
+class _ItemsDetailsScreensState extends State<ItemsDetailsScreens> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -41,9 +26,10 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
               height: size.height * 0.55,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(widget.recipeItems.image),
-                  fit: BoxFit.cover,
-                ),
+                    image: AssetImage(
+                      widget.recipeItems.image,
+                    ),
+                    fit: BoxFit.cover),
               ),
             ),
             Positioned(
@@ -80,7 +66,9 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                         children: [
                           CircleAvatar(
                             radius: 22,
-                            backgroundImage: NetworkImage(widget.recipeItems.woner),
+                            backgroundImage: NetworkImage(
+                              widget.recipeItems.woner,
+                            ),
                           ),
                           const SizedBox(width: 10),
                           Expanded(
@@ -98,13 +86,13 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                                 ),
                                 const SizedBox(height: 5),
                                 Text(
-                                  '12 Recipes Shared',
+                                  "12 Recipes Shared",
                                   style: TextStyle(
                                     height: 0,
                                     fontSize: 12,
                                     color: Colors.black.withOpacity(0.6),
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),
@@ -114,7 +102,7 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                               Row(
                                 children: [
                                   Text(
-                                    '${widget.recipeItems.rate}',
+                                    "${widget.recipeItems.rate}",
                                     style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.w500,
@@ -122,21 +110,22 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                                   ),
                                   const SizedBox(width: 5),
                                   RatingBar.builder(
-                                    initialRating: widget.recipeItems.rate,
                                     itemSize: 15,
-                                    allowHalfRating: true,
+                                    initialRating: widget.recipeItems.rate,
                                     unratedColor: Colors.grey.shade400,
-                                    itemBuilder: (context, index) => const Icon(
-                                      Icons.star_rounded,
-                                      color: Colors.amberAccent,
-                                    ),
+                                    itemBuilder: (context, index) {
+                                      return const Icon(
+                                        Icons.star,
+                                        color: Colors.amberAccent,
+                                      );
+                                    },
                                     onRatingUpdate: (value) {},
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 5),
                               Text(
-                                '(${widget.recipeItems.reviews} Reviews)',
+                                "${widget.recipeItems.reviews} Reviews",
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.black.withOpacity(0.6),
@@ -150,7 +139,6 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                       Row(
                         children: [
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 widget.recipeItems.name,
@@ -162,17 +150,17 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                               ),
                               const SizedBox(height: 2),
                               Text(
-                                '1 Bowl (${widget.recipeItems.weight}g)',
+                                "1 Bowl (${widget.recipeItems.weight}g)",
                                 style: const TextStyle(
                                   fontSize: 13,
                                   color: Colors.black45,
                                 ),
-                              ),
+                              )
                             ],
                           ),
                           const Spacer(),
                           const Text(
-                            'See details',
+                            "See details",
                             style: TextStyle(
                               color: Colors.green,
                               fontWeight: FontWeight.bold,
@@ -180,15 +168,15 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                           )
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MyProgressIndicatorValue(
+                            name: "Carbs",
+                            amount: "${widget.recipeItems.carb} g",
+                            percentage: "(56%)",
                             color: Colors.green,
-                            name: 'Carbs',
-                            amount: '${widget.recipeItems.carb} g',
-                            percentage: '(56%)',
                             data: 0.4,
                           ),
                           MyProgressIndicatorValue(
@@ -214,25 +202,25 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      const SizedBox(height: 25),
                       const Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Ingredients',
+                            "Ingredients",
                             style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Spacer(),
                           Text(
-                            'See details',
+                            "See all",
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
                               color: Colors.green,
+                              fontWeight: FontWeight.w500,
                             ),
-                          )
+                          ),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -242,15 +230,15 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                           ingredients.length,
                           (index) => Column(
                             children: [
-                              Container(
-                                height: 50,
-                                width: 50,
-                                padding: const EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: ingredients[index].color,
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundColor:
+                                    ingredients[index].color,
+                                child: Image.asset(
+                                  ingredients[index].image,
+                                  height: 40,
+                                  width: 40,
                                 ),
-                                child: Image.asset(ingredients[index].image),
                               ),
                               const SizedBox(height: 5),
                               Text(
@@ -271,9 +259,9 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
               ),
             ),
             Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.5,
+              bottom: size.height * 0.5,
               child: ClipPath(
-                clipper: ClipPathClass(),
+                clipper: MyClipper(),
                 child: Container(
                   height: 70,
                   width: 70,
@@ -284,7 +272,7 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
               ),
             ),
             Positioned(
-              bottom: MediaQuery.of(context).size.height * 0.48,
+              bottom: size.height * 0.48,
               right: 30,
               child: Container(
                 padding: const EdgeInsets.all(7),
@@ -292,9 +280,9 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      spreadRadius: 5,
                       color: Colors.grey.shade200,
-                    )
+                      spreadRadius: 5,
+                    ),
                   ],
                   color: widget.recipeItems.fav ? Colors.red : Colors.black45,
                 ),
@@ -303,7 +291,7 @@ class _DetailItmemsScreenState extends State<DetailItmemsScreen> {
                   color: Colors.white,
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -374,4 +362,19 @@ class MyProgressIndicatorValue extends StatelessWidget {
       ),
     );
   }
+}
+
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height);
+    path.lineTo(size.width, size.height);
+    path.quadraticBezierTo(0, size.height, 0, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
 }

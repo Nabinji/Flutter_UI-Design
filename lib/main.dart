@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/Views/recipe_onboarding.dart';
+import 'School Management App/Screen/school_man_screen.dart';
 
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RecipeOnBoardingScreen(),
+      home: SchoolManagementScreen(),
     );
   }
 }

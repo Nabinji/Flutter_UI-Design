@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food-Recipe-App/Views/recipe_home.dart';
+import 'package:flutter_ui_design/Food-Recipe-App/Views/home_screen_recipe.dart';
 import 'package:flutter_ui_design/Grocery-App-UI/Utils/constants.dart';
 
 class RecipeOnBoardingScreen extends StatefulWidget {
@@ -26,47 +26,43 @@ class _RecipeOnBoardingScreenState extends State<RecipeOnBoardingScreen> {
                 colors: [
                   Colors.grey.shade400,
                   Colors.grey.shade200,
-                  Colors.white
+                  Colors.white,
                 ],
               ),
               image: const DecorationImage(
-                image: AssetImage('assets/food-recipe/background 1.png'),
+                image: AssetImage("assets/food-recipe/background 1.png"),
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           Container(
             height: size.height * 0.325,
             width: size.width,
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 20,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const Text(
-                    "Let's cook your own food\nand adjust your diet",
+                    "Let's cook your own food and adjust your diet",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 30,
-                      height: 1.3,
-                      color: Colors.black,
                       fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                      height: 1.3,
                     ),
                   ),
                   const Text(
-                    "Don't be confused, Complete your nutritional\nneeds by choosing food here!",
+                    "Don't be confused, Complete your nutritional needs by choosing food here!",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Colors.black54,
                       fontSize: 15,
                       fontWeight: FontWeight.w500,
                       height: 1.8,
+                      color: Colors.black54,
                     ),
                   ),
                   GestureDetector(
@@ -74,35 +70,33 @@ class _RecipeOnBoardingScreenState extends State<RecipeOnBoardingScreen> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const RecipeHomeScreen(),
+                          builder: (_) => const HomeScreenRecipe(),
                         ),
                       );
                     },
                     child: Container(
                       height: 55,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: gradientColor
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: gradientColor),
                       child: const Center(
                         child: Text(
-                          'Get Started',
+                          "Get Started",
                           style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
                             fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
                           ),
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-// 90
