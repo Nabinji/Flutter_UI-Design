@@ -5,7 +5,7 @@ class AppHomePage extends StatefulWidget {
   const AppHomePage({super.key});
 
   @override
-  _AppHomePageState createState() => _AppHomePageState();
+  State<AppHomePage> createState() => _AppHomePageState();
 }
 
 class _AppHomePageState extends State<AppHomePage> {
@@ -15,9 +15,7 @@ class _AppHomePageState extends State<AppHomePage> {
       children: [
         Container(
           color: kheaderColor,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 30,
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: SafeArea(
             child: Column(
               children: [
@@ -39,7 +37,7 @@ class _AppHomePageState extends State<AppHomePage> {
                             color: textColor,
                             fontWeight: FontWeight.normal,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -49,8 +47,8 @@ class _AppHomePageState extends State<AppHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: 40,
-                      height: 40,
+                      width: 45,
+                      height: 45,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
@@ -59,10 +57,11 @@ class _AppHomePageState extends State<AppHomePage> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: Colors.blueGrey.withOpacity(0.2),
-                              blurRadius: 7,
-                              spreadRadius: 7,
-                              offset: const Offset(0, 5))
+                            color: Colors.blueGrey.withOpacity(0.2),
+                            blurRadius: 7,
+                            spreadRadius: 7,
+                            offset: const Offset(0, 5),
+                          ),
                         ],
                         image: const DecorationImage(
                           fit: BoxFit.cover,
@@ -80,22 +79,22 @@ class _AppHomePageState extends State<AppHomePage> {
                           style: TextStyle(
                             fontSize: 27,
                             fontWeight: FontWeight.w900,
-                            letterSpacing: -.5,
+                            letterSpacing: -0.5,
                             color: textColor,
                           ),
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          "Here is a list of schedule\nYou need to check...",
+                          "Here is a list of schedule\nyou need to check...",
                           style: TextStyle(
                             height: 1.8,
                             color: textColor.withOpacity(0.75),
                           ),
-                        ),
+                        )
                       ],
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -104,7 +103,7 @@ class _AppHomePageState extends State<AppHomePage> {
           top: 220,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 15),
-            height: MediaQuery.of(context).size.height - 245,
+            height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -112,49 +111,44 @@ class _AppHomePageState extends State<AppHomePage> {
             ),
             child: ListView(
               children: [
-                buildTitleRow("TODAY CLASSES", 3),
+                seeAllItems("TODAY CLASSES", 3),
                 const SizedBox(height: 20),
-                buildClassItem(
+                todayclassesItems(
                   "07:00",
                   "The Basic of Typography II",
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDRlp-KGr_M94k_oor4Odjn2UzbAS7n1YoA&s",
                   "Gabriel Sutton",
                 ),
-                buildClassItem(
+                todayclassesItems(
                   "09:30",
-                  "Design Psychology: Principle of Art and ",
+                  "Design Psychology: Principle of Arts",
                   "https://media.istockphoto.com/id/1154642632/photo/close-up-portrait-of-brunette-woman.jpg?s=612x612&w=0&k=20&c=d8W_C2D-2rXlnkyl8EirpHGf-GpM62gBjpDoNryy98U=",
                   "Jessie Reeves",
                 ),
-                const SizedBox(
-                  height: 25,
-                ),
-                buildTitleRow("YOUR TASKS", 4),
-                const SizedBox(
-                  height: 20,
-                ),
+                const SizedBox(height: 20),
+                seeAllItems("YOUR TASKS", 4),
                 SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      buildTaskItem(
+                      yourTaskItems(
+                        Colors.red,
                         3,
                         "The Basic of Typography II",
-                        Colors.red,
                       ),
-                      buildTaskItem(
-                        3,
-                        "Design Psychology: Principle of Arts",
+                       yourTaskItems(
                         Colors.green,
+                        10,
+                        "Design Psychology: Principle of arts",
                       ),
-                      buildTaskItem(
-                        3,
-                        "Design Psychology: Principle of...",
-                        Colors.green,
+                       yourTaskItems(
+                       Colors.red,
+                        10,
+                        "Design Psychology: Principle of arts",
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -163,11 +157,7 @@ class _AppHomePageState extends State<AppHomePage> {
     );
   }
 
-  Container buildTaskItem(
-    int numDays,
-    String courseTitle,
-    Color color,
-  ) {
+  Container yourTaskItems(Color color, int dayLeft, String courseTitle) {
     return Container(
       margin: const EdgeInsets.only(right: 15),
       padding: const EdgeInsets.all(12),
@@ -195,12 +185,12 @@ class _AppHomePageState extends State<AppHomePage> {
               ),
               const SizedBox(width: 5),
               Text(
-                "$numDays days left",
+                "$dayLeft days left",
                 style: const TextStyle(
                   fontSize: 17,
                   color: Colors.black54,
                 ),
-              ),
+              )
             ],
           ),
           const SizedBox(height: 20),
@@ -216,13 +206,13 @@ class _AppHomePageState extends State<AppHomePage> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-          ),
+          )
         ],
       ),
     );
   }
 
-  Row buildTitleRow(String title, int number) {
+  Row seeAllItems(title, number) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -230,8 +220,8 @@ class _AppHomePageState extends State<AppHomePage> {
           text: TextSpan(
             text: title,
             style: const TextStyle(
-              color: Colors.black,
               fontWeight: FontWeight.w900,
+              color: Colors.black,
             ),
             children: [
               TextSpan(
@@ -247,15 +237,15 @@ class _AppHomePageState extends State<AppHomePage> {
         Text(
           "See all",
           style: TextStyle(
-            color: secondTextColor,
-            fontWeight: FontWeight.bold,
-          ),
+              fontWeight: FontWeight.bold,
+              color: secondTextColor,
+              fontSize: 15),
         )
       ],
     );
   }
 
-  Container buildClassItem(time, title, profile, name) {
+  Container todayclassesItems(time, title, profile, name) {
     return Container(
       margin: const EdgeInsets.only(bottom: 15),
       height: 110,
@@ -271,7 +261,9 @@ class _AppHomePageState extends State<AppHomePage> {
             children: [
               Text(
                 time,
-                style: const TextStyle(fontWeight: FontWeight.w800),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w800,
+                ),
               ),
               const Text(
                 "AM",
@@ -279,7 +271,7 @@ class _AppHomePageState extends State<AppHomePage> {
                   fontWeight: FontWeight.bold,
                   color: Colors.grey,
                 ),
-              ),
+              )
             ],
           ),
           Container(
@@ -287,7 +279,7 @@ class _AppHomePageState extends State<AppHomePage> {
             color: Colors.grey.withOpacity(0.5),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,9 +288,9 @@ class _AppHomePageState extends State<AppHomePage> {
                   width: MediaQuery.of(context).size.width - 160,
                   child: Text(
                     title,
-                    style: const TextStyle(fontSize: 16),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
                 Row(
@@ -316,8 +308,8 @@ class _AppHomePageState extends State<AppHomePage> {
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
-                          color: Colors.grey,
                           fontSize: 16,
+                          color: Colors.grey,
                         ),
                       ),
                     )
@@ -326,9 +318,7 @@ class _AppHomePageState extends State<AppHomePage> {
                 Row(
                   children: [
                     CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        profile,
-                      ),
+                      backgroundImage: NetworkImage(profile),
                       radius: 12,
                     ),
                     const SizedBox(width: 5),
@@ -340,10 +330,10 @@ class _AppHomePageState extends State<AppHomePage> {
                       ),
                     )
                   ],
-                ),
+                )
               ],
             ),
-          )
+          ),
         ],
       ),
     );

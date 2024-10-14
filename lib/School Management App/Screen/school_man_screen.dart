@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Utils/colors.dart';
-import 'app_home_page.dart';
-import 'calendar_screen.dart';
+import 'package:flutter_ui_design/School%20Management%20App/Screen/app_home_page.dart';
+import 'package:flutter_ui_design/School%20Management%20App/Screen/calendar.dart';
+import 'package:flutter_ui_design/School%20Management%20App/Utils/colors.dart';
 
 class SchoolManagementScreen extends StatefulWidget {
   const SchoolManagementScreen({super.key});
@@ -11,7 +11,7 @@ class SchoolManagementScreen extends StatefulWidget {
 }
 
 class _SchoolManagementScreenState extends State<SchoolManagementScreen> {
-  int _selectedItemIndex = 0;
+  int selectedIndex = 0;
   final List pages = [
     const AppHomePage(),
     const Scaffold(),
@@ -21,49 +21,53 @@ class _SchoolManagementScreenState extends State<SchoolManagementScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          elevation: 0,
-          backgroundColor: kBackground,
-          unselectedItemColor: Colors.grey,
-          selectedItemColor: Colors.black,
-          selectedIconTheme: IconThemeData(
-          color: Colors.blueGrey[600],
+    return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        backgroundColor: kBackground,
+        unselectedItemColor: Colors.grey,
+        selectedItemColor: Colors.black,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: selectedIndex,
+        onTap: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+            ),
+            label: "",
           ),
-          currentIndex: _selectedItemIndex,
-          type: BottomNavigationBarType.fixed,
-          onTap: (int index) {
-            setState(() {
-              _selectedItemIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(Icons.home),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.insert_chart,
             ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(Icons.insert_chart),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.done,
             ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(Icons.done),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_today,
             ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(Icons.calendar_today),
+            label: "",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.chat_bubble,
             ),
-            BottomNavigationBarItem(
-              label: "",
-              icon: Icon(Icons.chat_bubble),
-            ),
-          ],
-        ),
-        body: pages[_selectedItemIndex],
+            label: "",
+          ),
+        ],
       ),
+      body: pages[selectedIndex],
     );
   }
 }

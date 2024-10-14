@@ -3,14 +3,14 @@ import 'package:flutter_ui_design/School%20Management%20App/Utils/colors.dart';
 
 import '../Model/model.dart';
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+class myCalendarPage extends StatefulWidget {
+  const myCalendarPage({super.key});
 
   @override
-  _CalendarPageState createState() => _CalendarPageState();
+  _myCalendarPageState createState() => _myCalendarPageState();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _myCalendarPageState extends State<myCalendarPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -58,10 +58,11 @@ class _CalendarPageState extends State<CalendarPage> {
                 Text(
                   "Today",
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: secondTextColor,
-                      fontSize: 18,
-                      letterSpacing: -0.5),
+                    fontWeight: FontWeight.bold,
+                    color: secondTextColor,
+                    fontSize: 18,
+                    letterSpacing: -0.5,
+                  ),
                 )
               ],
             ),
@@ -86,13 +87,13 @@ class _CalendarPageState extends State<CalendarPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      calendar("S", 7, false),
-                      calendar("M", 8, false),
-                      calendar("T", 9, false),
-                      calendar("W", 10, true),
-                      calendar("T", 11, false),
-                      calendar("F", 12, false),
-                      calendar("S", 13, false),
+                      myCalendar("S", 7, false),
+                      myCalendar("M", 8, false),
+                      myCalendar("T", 9, false),
+                      myCalendar("W", 10, true),
+                      myCalendar("T", 11, false),
+                      myCalendar("F", 12, false),
+                      myCalendar("S", 13, false),
                     ],
                   ),
                 ),
@@ -121,7 +122,7 @@ class _CalendarPageState extends State<CalendarPage> {
                                     ),
                                     const SizedBox(width: 15),
                                     SizedBox(
-                                      width: MediaQuery.of(context).size.width /
+                                      width:size.width /
                                           1.15,
                                       child: Row(
                                         mainAxisAlignment:
@@ -266,7 +267,6 @@ class _CalendarPageState extends State<CalendarPage> {
                           );
                         },
                       ),
-                      
                     ),
                   ),
                 )
@@ -278,7 +278,7 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 
-  Container calendar(
+  Container myCalendar(
     String weekDay,
     int date,
     bool isActive,
