@@ -328,6 +328,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.15.4"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      sha256: b9c29a161230ee03d3ccf545097fccd9b87a5264228c5d348202e0f0c28f9010
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.2"
   http_multi_server:
     dependency: transitive
     description:
@@ -629,6 +637,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  stability_image_generation:
+    dependency: "direct main"
+    description:
+      name: stability_image_generation
+      sha256: "8c0874af9d894a938b0829dbede8854cea52d390ad5335dfad3b1596854d315a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.4"
   stack_trace:
     dependency: transitive
     description:

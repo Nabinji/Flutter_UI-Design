@@ -3,14 +3,14 @@ import 'package:flutter_ui_design/School%20Management%20App/Utils/colors.dart';
 
 import '../Model/model.dart';
 
-class myCalendarPage extends StatefulWidget {
-  const myCalendarPage({super.key});
+class CalendarPage extends StatefulWidget {
+  const CalendarPage({super.key});
 
   @override
   _myCalendarPageState createState() => _myCalendarPageState();
 }
 
-class _myCalendarPageState extends State<myCalendarPage> {
+class _myCalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
