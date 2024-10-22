@@ -4,6 +4,7 @@ import 'package:flutter_ui_design/Football%20Live%20Score%20App/Widgets/live_mat
 import 'package:flutter_ui_design/Football%20Live%20Score%20App/constants.dart';
 import 'package:iconsax/iconsax.dart';
 
+// import '../Widgets/live_match_detail.dart';
 import '../Widgets/live_match_detail.dart';
 
 class MatchDetailScreen extends StatefulWidget {
@@ -85,13 +86,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                   const SizedBox(height: 20),
                   LiveMatchStats(
                     homeStats: widget.liveMatch.shotOnTarget,
-                    awayStats: widget.liveMatch.shotOnTarget *2,
+                    awayStats: widget.liveMatch.shotOnTarget * 2,
                     title: "Shots  On Target",
-                    homeValue: widget.liveMatch.shotOnTarget.toDouble()/10,
-                    awayValue: widget.liveMatch.shotOnTarget.toDouble()*2/10,
+                    homeValue: widget.liveMatch.shotOnTarget.toDouble() / 10,
+                    awayValue:
+                        widget.liveMatch.shotOnTarget.toDouble() * 2 / 10,
                     isHomeWinner: false,
                   ),
-                   LiveMatchStats(
+                  LiveMatchStats(
                     homeStats: widget.liveMatch.homeGoal,
                     awayStats: widget.liveMatch.awayGoal,
                     title: "Goals",

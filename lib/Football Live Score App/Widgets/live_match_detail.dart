@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Screens/match_detail_screen.dart';
+import '../screens/match_detail_screen.dart';
 import '../constants.dart';
 
 class LiveMatchDetail extends StatelessWidget {
