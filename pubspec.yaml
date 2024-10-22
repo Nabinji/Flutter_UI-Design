@@ -46,6 +46,8 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   flutter_slidable: ^3.1.1
   percent_indicator: ^4.2.3
+  http: ^1.2.2
+  stability_image_generation: ^0.0.4
 
 dev_dependencies:
   flutter_test:
