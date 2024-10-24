@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/AI%20Image%20Generator/image_generator.dart';
+import 'package:flutter_ui_design/Mobile%20Banking%20App/main_home_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +12,12 @@ class MyApp extends StatelessWidget {
   // Root widget of the app
   @override
   Widget build(BuildContext context) {
-    return  const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AiTextToImageGenerator(),
+      theme: ThemeData(
+       textTheme: GoogleFonts.jostTextTheme(),
+      ),
+      home: const MainHomeScreen(),
     );
   }
 }

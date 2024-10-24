@@ -288,6 +288,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: b1ac0fe2832c9cc95e5e88b57d627c5e68c223b9657f4b96e1487aa9098c7b82
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.1"
   graphs:
     dependency: transitive
     description:
@@ -677,6 +685,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  swipeable_button_view:
+    dependency: "direct main"
+    description:
+      name: swipeable_button_view
+      sha256: "6fbe3fe9084d849828fa49bf1f5d48a107f7797e3c7eff41aa61541c0b6d97f2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
+  syncfusion_flutter_charts:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_charts
+      sha256: ec08668a7b3c95075aee32f6d73b7a053c6f1361de1e85f88a433d63f835beed
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.55"
+  syncfusion_flutter_core:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_core
+      sha256: bc86234c9a0a87b6c3288b9065175e74e9a73e22b2237989a8bbdeff0c8befd7
+      url: "https://pub.dev"
+    source: hosted
+    version: "27.1.55"
   term_glyph:
     dependency: transitive
     description:

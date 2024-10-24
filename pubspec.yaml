@@ -48,6 +48,9 @@ dependencies:
   percent_indicator: ^4.2.3
   http: ^1.2.2
   stability_image_generation: ^0.0.4
+  syncfusion_flutter_charts: ^27.1.55
+  swipeable_button_view: ^0.0.2
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +86,7 @@ flutter:
     - assets/football/
     - assets/plant-shop/
     - assets/food-recipe/
+    - assets/banking-app/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
