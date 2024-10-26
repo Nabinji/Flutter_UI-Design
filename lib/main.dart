@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Mobile%20Banking%20App/View/main_home_screen.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_ui_design/API%20League/Meme%20API/random_meme_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,13 +11,9 @@ class MyApp extends StatelessWidget {
   // Root widget of the app
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        // add the google_fonts package in your project
-        textTheme: GoogleFonts.jostTextTheme(),
-      ),
-      home: const MainHomeScreen(),
+      home: RandomMemeScreen(),
     );
   }
 }

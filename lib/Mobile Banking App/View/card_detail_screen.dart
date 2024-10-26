@@ -141,7 +141,9 @@ class _CardDetailScreenState extends State<CardDetailScreen> {
                       ],
                     ),
                   ),
-                 SizedBox(height: size.height*0.06,),
+                  SizedBox(
+                    height: size.height * 0.06,
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: SwipeableButtonView(
