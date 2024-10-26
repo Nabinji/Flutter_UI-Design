@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/API%20League/Meme%20API/random_meme_screen.dart';
+import 'package:flutter_ui_design/API%20League/News%20API/display_news.dart';
 
 void main() {
   runApp(const MyApp());
