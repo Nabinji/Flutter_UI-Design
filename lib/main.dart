@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/API%20League/Meme%20API/random_meme_screen.dart';
 import 'package:flutter_ui_design/API%20League/News%20API/display_news.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/View/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RandomMemeScreen(),
+      home: MainPage (),
     );
   }
 }
