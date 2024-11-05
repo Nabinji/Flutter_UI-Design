@@ -18,7 +18,7 @@ List<Review> reviews = [
   Review(
     id: 1,
     fullname: "Joana Perkins",
-    image: "https://robohash.org/temporefugafugit.png?size=50x50&set=set1",
+    image: "https://plus.unsplash.com/premium_photo-1671656333460-a3a85854d01e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFjayUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D",
     rate: 4.6,
     comment:
         "Many thanks to my doctor! She is professional, expert and competent doctor...",
@@ -28,7 +28,7 @@ List<Review> reviews = [
   Review(
     id: 2,
     fullname: "Paolina Caldicot",
-    image: "https://robohash.org/etteneturvoluptatum.png?size=50x50&set=set1",
+    image: "https://plus.unsplash.com/premium_photo-1673866484792-c5a36a6c025e?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
     rate: 3.8,
     comment:
         "Greatfull to find such a great and kind doctor",
@@ -38,10 +38,10 @@ List<Review> reviews = [
   Review(
     id: 3,
     fullname: "Leicester Norcliffe",
-    image: "https://robohash.org/temporeundeeveniet.png?size=50x50&set=set1",
+    image: "https://marketplace.canva.com/EAFHfL_zPBk/1/0/1600w/canva-yellow-inspiration-modern-instagram-profile-picture-kpZhUIzCx_w.jpg",
     rate: 4.5,
     comment:
-        "Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.",
+        "The doctor was incredibly attentive and really took the time to listen to my concerns. I felt like my health and well-being truly mattered. Highly recommend!",
     date: "12/10/2022",
     color: 0xFFf9d8b9,
   ),
@@ -49,20 +49,20 @@ List<Review> reviews = [
     id: 4,
     fullname: "Nikolaos Cooksley",
     image:
-        "https://robohash.org/laborumrepudiandaererum.png?size=50x50&set=set1",
+        "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/50dab922-5d48-4c6b-8725-7fd0755d9334/3a3f2d35-8167-4708-9ef0-bdaa980989f9.png",
     rate: 3.5,
     comment:
-        "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo.",
+        "I was nervous before my appointment, but the doctor’s calm and reassuring manner put me right at ease. I left with a clear understanding of my treatment plan.",
     date: "4/19/2022",
     color: 0xFFccae4d,
   ),
   Review(
     id: 5,
     fullname: "Andy Beretta",
-    image: "https://robohash.org/abperspiciatisodit.png?size=50x50&set=set1",
+    image: "https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg",
     rate: 3.3,
     comment:
-        "Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus. Suspendisse potenti.",
+        "Amazing experience! The doctor was thorough and answered all my questions without rushing. I feel much more confident about my health.",
     date: "10/27/2022",
     color: 0xFF086887,
   ),
@@ -70,29 +70,29 @@ List<Review> reviews = [
     id: 6,
     fullname: "Mada Prodrick",
     image:
-        "https://robohash.org/inventorevoluptatibusipsam.png?size=50x50&set=set1",
+        "https://png.pngtree.com/thumb_back/fh260/background/20230614/pngtree-woman-in-sunglasses-standing-in-front-of-a-dark-background-image_2891237.jpg",
     rate: 3.9,
     comment:
-        "Maecenas tincidunt lacus at velit. Donec semper sapien a libero. Nam dui.",
+        "The level of care I received was outstanding! I appreciated how the doctor explained everything in detail, making sure I understood my options.",
     date: "10/11/2022",
     color: 0xFFe1edf8,
   ),
   Review(
     id: 7,
     fullname: "Constantin Slowan",
-    image: "https://robohash.org/quamdoloreos.png?size=50x50&set=set1",
+    image: "https://i.pinimg.com/736x/55/b5/9c/55b59c73bd0ee0e42c0022168b9d36be.jpg",
     rate: 3.2,
-    comment: "Donec ut dolor. Donec semper sapien a libero. Nam dui.",
+    comment: "From start to finish, my visit was excellent. The doctor was knowledgeable, compassionate, and made me feel valued. I’ll definitely be back!",
     date: "10/24/2022",
     color: 0xFFe8ee07,
   ),
   Review(
     id: 8,
     fullname: "Sally Fernyhough",
-    image: "https://robohash.org/cumeumfugiat.png?size=50x50&set=set1",
+    image: "https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZSUyMHBpY3R1cmV8ZW58MHx8MHx8fDA%3D",
     rate: 3.7,
     comment:
-        "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem.",
+        "The doctor was very professional and empathetic. I felt heard and understood, and the treatment has already made a difference.",
     date: "5/11/2022",
     color: 0xFFe1edf8,
   ),
