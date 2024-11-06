@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import '../Model/review.dart';
-import '../const.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/Model/review.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/const.dart';
 
-class ReviewItem extends StatelessWidget {
+class ReviewItems extends StatelessWidget {
   final Review review;
-  const ReviewItem({
-    super.key,
-    required this.review,
-  });
+  const ReviewItems({super.key, required this.review});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +16,7 @@ class ReviewItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: grey.withOpacity(0.2),
+            color: Colors.grey.withOpacity(0.2),
             blurRadius: 10,
           ),
         ],
@@ -29,14 +26,12 @@ class ReviewItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Row(
-            crossAxisAlignment:CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
                 radius: 25,
                 backgroundColor: Color(review.color).withOpacity(0.4),
-                backgroundImage: NetworkImage(
-                  review.image,
-                ),
+                backgroundImage: NetworkImage(review.image),
               ),
               const SizedBox(width: 10),
               Expanded(
@@ -48,16 +43,15 @@ class ReviewItem extends StatelessWidget {
                       style: const TextStyle(
                         color: black,
                         fontSize: 16,
-                        letterSpacing: 1,
+                        letterSpacing: 0,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const Text(
-                      '1 day ago',
+                      "1 day ago",
                       style: TextStyle(
                         color: grey,
-                        fontSize: 14,
-                        letterSpacing: 1,
+                        letterSpacing: 0,
                         fontWeight: FontWeight.normal,
                       ),
                     )
@@ -82,25 +76,25 @@ class ReviewItem extends StatelessWidget {
                     Text(
                       review.rate.toStringAsFixed(1),
                       style: const TextStyle(
-                        fontSize: 12,fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
                         color: black,
                       ),
-                    )
+                    ),
                   ],
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 10),
           Text(
             review.comment,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+            overflow: TextOverflow.ellipsis,maxLines: 2,
             style: const TextStyle(
-              color: black,
               fontSize: 15,
               letterSpacing: 0,
-             fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.w500,
+              color: black,
             ),
           )
         ],

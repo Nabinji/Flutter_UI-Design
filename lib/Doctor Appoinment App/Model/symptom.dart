@@ -1,27 +1,27 @@
-class Symptom {
+class Symptoms {
   final String image;
   final String label;
 
-  Symptom({
+  Symptoms({
     required this.image,
     required this.label,
   });
 }
 
-List<Symptom> symptoms = [
-  Symptom(
+List<Symptoms> symptoms = [
+  Symptoms(
     image: 'assets/doctor-appoinment/temperature.png',
     label: 'Temperature',
   ),
-  Symptom(
+  Symptoms(
     image: 'assets/doctor-appoinment/snuffle.png',
     label: 'Snuffle',
   ),
-  Symptom(
+  Symptoms(
     image: 'assets/doctor-appoinment/headache.png',
     label: 'Headache',
   ),
-  Symptom(
+  Symptoms(
     image: 'assets/doctor-appoinment/dizzy.png',
     label: 'Dizzy',
   ),

@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/View/home_screen.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/View/schedule_screen.dart';
 import 'package:iconsax/iconsax.dart';
-import 'home_page.dart';
-import 'schedule_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
   @override
-  _MainPageState createState() => _MainPageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
   int selectedIndex = 0;
   final List pages = [
-    const DoctorAppoinHomePage(),
+  const DoctorAppoinmentHomeScreen(),
     const Scaffold(),
-    const SchedulePage(),
+    const ScheduleScreen(),
     const Scaffold(),
   ];
   @override
@@ -36,27 +36,19 @@ class _MainPageState extends State<MainPage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Iconsax.home5,
-            ),
+            icon: Icon(Iconsax.home5),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Iconsax.message,
-            ),
+            icon: Icon(Iconsax.message),
             label: "Messages",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Iconsax.calendar,
-            ),
+            icon: Icon(Iconsax.calendar),
             label: "Schedule",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings,
-            ),
+            icon: Icon(Icons.settings),
             label: "Setting",
           ),
         ],

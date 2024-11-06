@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/Model/schedule.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/const.dart';
 import 'package:intl/intl.dart';
-import '../Model/schedule.dart';
-import '../const.dart';
 
-class ScheduleItem extends StatelessWidget {
+class ScheduleItems extends StatelessWidget {
   final Schedule schedule;
-  const ScheduleItem({
+  const ScheduleItems({
     super.key,
     required this.schedule,
   });
@@ -13,10 +13,13 @@ class ScheduleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 20,
+      ),
       decoration: BoxDecoration(
-        color: Colors.white,
         borderRadius: BorderRadius.circular(15),
+        color: Colors.white,
         boxShadow: [
           BoxShadow(
             blurRadius: 10,
@@ -34,23 +37,23 @@ class ScheduleItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Dr. ${schedule.doctor.name}',
+                    "Dr. ${schedule.doctor.name}",
                     style: const TextStyle(
                       color: black,
-                      fontWeight: FontWeight.bold,
                       fontSize: 18,
                       letterSpacing: -.5,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   const SizedBox(height: 5),
                   Text(
                     schedule.doctor.specialist,
                     style: const TextStyle(
-                      color: grey,
+                      color: Colors.grey,
                       fontSize: 15,
                       letterSpacing: -.5,
                     ),
-                  ),
+                  )
                 ],
               ),
               Container(
@@ -63,11 +66,11 @@ class ScheduleItem extends StatelessWidget {
                   shape: BoxShape.circle,
                   color: Color(schedule.doctor.color).withOpacity(0.5),
                 ),
-              )
+              ),
             ],
           ),
           const SizedBox(height: 10),
-          const Divider(),
+          const Divider(color: Colors.black12,),
           const SizedBox(height: 10),
           Row(
             children: [
@@ -79,15 +82,15 @@ class ScheduleItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    DateFormat('d/MM/y').format(schedule.time),
+                    DateFormat("d/MM/y").format(schedule.time),
                     style: const TextStyle(
                       color: black,
-                      letterSpacing: -0.5,
+                      letterSpacing: -.5,
                     ),
                   )
                 ],
               ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 25),
               Row(
                 children: [
                   const Icon(
@@ -96,12 +99,15 @@ class ScheduleItem extends StatelessWidget {
                   ),
                   const SizedBox(width: 5),
                   Text(
-                    DateFormat('jm').format(schedule.time),
-                    style: const TextStyle(color: black, letterSpacing: 1),
-                  )
+                    DateFormat("jm").format(schedule.time),
+                    style: const TextStyle(
+                      color: black,
+                      letterSpacing: 0,
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 25),
               Row(
                 children: [
                   Container(
@@ -115,7 +121,10 @@ class ScheduleItem extends StatelessWidget {
                   const SizedBox(width: 5),
                   Text(
                     schedule.status,
-                    style: const TextStyle(color: black, letterSpacing: 1),
+                    style: const TextStyle(
+                      color: black,
+                      letterSpacing: 0,
+                    ),
                   )
                 ],
               ),
@@ -127,38 +136,42 @@ class ScheduleItem extends StatelessWidget {
             children: [
               Container(
                 height: 50,
-                width: (MediaQuery.of(context).size.width / 2.5),
+                width: MediaQuery.of(context).size.width / 2.5,
                 decoration: BoxDecoration(
                   color: grey.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Center(
                   child: Text(
-                    'Cancel',
+                    "Cancel",
                     style: TextStyle(
-                        color: black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600),
+                      color: black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
               Container(
                 height: 50,
-                width: (MediaQuery.of(context).size.width / 2.25),
+                width: MediaQuery.of(context).size.width / 2.25,
                 decoration: BoxDecoration(
-                    color: purple, borderRadius: BorderRadius.circular(12)),
+                  color: purple,
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: const Center(
                   child: Text(
-                    'Reschedule',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold),
+                    "Reschedule",
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

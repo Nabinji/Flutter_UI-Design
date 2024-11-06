@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/Model/doctor.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/const.dart';
 
-import '../Model/doctor.dart';
-import '../const.dart';
-
-
-class DoctorItem extends StatelessWidget {
+class ListOfDoctor extends StatelessWidget {
   final Doctor doctor;
-  const DoctorItem({
-    super.key,
-    required this.doctor,
-  });
+  const ListOfDoctor({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(18),
-      width: (MediaQuery.of(context).size.width / 2.24),
+      width: MediaQuery.of(context).size.width / 2.24,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -23,7 +18,7 @@ class DoctorItem extends StatelessWidget {
           BoxShadow(
             color: grey.withOpacity(0.2),
             blurRadius: 10,
-          )
+          ),
         ],
       ),
       child: Column(
@@ -38,7 +33,7 @@ class DoctorItem extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(
-            'Dr. ${doctor.name}',
+            "Dr. ${doctor.name}",
             style: const TextStyle(
               fontSize: 18,
               letterSpacing: -.5,
@@ -50,13 +45,13 @@ class DoctorItem extends StatelessWidget {
           Text(
             doctor.specialist,
             style: const TextStyle(
-              letterSpacing: 1,color: Colors.black26,
-              fontWeight: FontWeight.bold,
-            ),
+                letterSpacing: 0,
+                color: Colors.black26,
+                fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8,vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
             decoration: BoxDecoration(
               color: Colors.orange[50],
               borderRadius: BorderRadius.circular(15),
@@ -66,20 +61,16 @@ class DoctorItem extends StatelessWidget {
               children: [
                 const Icon(
                   Icons.star,
-                  color:Colors.orange,
+                  color: Colors.orange,
                   size: 20,
                 ),
                 const SizedBox(width: 5),
                 Text(
                   rate(doctor).toStringAsFixed(1),
-                  style: const TextStyle(
-                    fontSize: 12,
-                    color: black,
-                  ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

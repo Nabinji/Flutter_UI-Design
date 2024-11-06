@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../const.dart';
-import '../Model/doctor.dart';
-import '../Widgets/review_item.dart';
-class DetailPage extends StatelessWidget {
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/Model/doctor.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/View/Widgets/review_items.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/const.dart';
+
+class DoctorDetailScreen extends StatelessWidget {
   final Doctor doctor;
-  const DetailPage({super.key, required this.doctor});
+  const DoctorDetailScreen({
+    super.key,
+    required this.doctor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +32,14 @@ class DetailPage extends StatelessWidget {
                           Navigator.pop(context);
                         },
                         child: const Icon(
-                          Icons.arrow_back_ios,
+                          Icons.arrow_back_ios_new,
                           color: Colors.white,
                         ),
                       ),
                       const Icon(
                         Icons.more_vert,
                         color: Colors.white,
-                      )
+                      ),
                     ],
                   ),
                 ),
@@ -48,11 +52,11 @@ class DetailPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 18),
                 Text(
-                  'Dr. ${doctor.name}',
+                  "Dr. ${doctor.name}",
                   style: const TextStyle(
-                    fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                    fontSize: 20,
                     letterSpacing: 1,
                   ),
                 ),
@@ -60,40 +64,34 @@ class DetailPage extends StatelessWidget {
                   doctor.specialist,
                   style: const TextStyle(
                     fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white54,
-                    letterSpacing: 1,
+                    letterSpacing: 0,
                   ),
                 ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.3),
-                      ),
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.white.withOpacity(0.3),
                       child: const Icon(
                         CupertinoIcons.phone_fill,
                         color: Colors.white,
                       ),
                     ),
                     const SizedBox(width: 30),
-                    Container(
-                      padding: const EdgeInsets.all(14),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white.withOpacity(0.3),
-                      ),
+                    CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.white.withOpacity(0.3),
                       child: const Icon(
                         CupertinoIcons.chat_bubble_text_fill,
                         color: Colors.white,
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
             const SizedBox(height: 20),
@@ -115,24 +113,24 @@ class DetailPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'About doctor',
+                            "About Doctor",
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
                               fontSize: 18,
                               color: black,
                               letterSpacing: 0,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           const SizedBox(height: 10),
                           Text(
                             "Dr. ${doctor.name} ${doctor.about}",
-                            maxLines: 2,
                             textAlign: TextAlign.justify,
+                            maxLines: 2,
                             style: const TextStyle(
-                              height: 1.5,
                               fontSize: 16,
-                              color: black,
+                              height: 1.5,
                               letterSpacing: 0,
+                              color: black,
                             ),
                           ),
                         ],
@@ -140,28 +138,25 @@ class DetailPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
                               const Text(
-                                'Reviews',
+                                "Reviews",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   color: black,
-                                  letterSpacing: 1,
+                                  letterSpacing: 0,
                                 ),
                               ),
                               const SizedBox(width: 10),
                               Icon(
                                 Icons.star,
                                 color: Colors.amber[800],
-                                size: 20,
                               ),
                               const SizedBox(width: 5),
                               Text(
@@ -173,53 +168,33 @@ class DetailPage extends StatelessWidget {
                               ),
                               const SizedBox(width: 5),
                               Text(
-                                '(${doctor.reviews.length})',
+                                "(${doctor.reviews.length})",
                                 style: const TextStyle(
                                   color: grey,
-                                  letterSpacing: 1,
                                 ),
-                              )
+                              ),
                             ],
                           ),
                           const Text(
-                            'See all',
+                            "See all",
                             style: TextStyle(
                               color: purple,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
-                          )
-                        ],
-                      ),
-                    ),
-                    SingleChildScrollView(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          ...List.generate(
-                            doctor.reviews.length,
-                            (index) => Padding(
-                              padding: index == 0
-                                  ? const EdgeInsets.only(left: 15, right: 15)
-                                  : const EdgeInsets.only(right: 15),
-                              child: ReviewItem(
-                                review: doctor.reviews[index],
-                              ),
-                            ),
                           ),
                         ],
                       ),
                     ),
+                    listOfReviewa(),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            'Location',
+                            "Location",
                             style: TextStyle(
                               fontSize: 18,
                               color: black,
@@ -246,7 +221,7 @@ class DetailPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const Text(
-                                    'Lotus Medical Center',
+                                    "Lotus Medical Center",
                                     style: TextStyle(
                                       fontSize: 18,
                                       letterSpacing: -.5,
@@ -267,7 +242,7 @@ class DetailPage extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -276,7 +251,7 @@ class DetailPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -293,14 +268,14 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Consultation Price',
+                  "Consultation Price",
                   style: TextStyle(
-                    letterSpacing: 1,
+                    letterSpacing: 0,
                     color: grey,
                   ),
                 ),
                 Text(
-                  '\$${doctor.price}',
+                  "\$${doctor.price}",
                   style: const TextStyle(
                     fontSize: 20,
                     color: black,
@@ -318,7 +293,7 @@ class DetailPage extends StatelessWidget {
               ),
               child: const Center(
                 child: Text(
-                  'Book Appoinment',
+                  "Book Appoinment",
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,
@@ -329,6 +304,29 @@ class DetailPage extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  SingleChildScrollView listOfReviewa() {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          ...List.generate(
+            doctor.reviews.length,
+            (index) => Padding(
+              padding: index == 0
+                  ? const EdgeInsets.only(left: 15, right: 15)
+                  : const EdgeInsets.only(right: 15),
+              child: ReviewItems(
+                review: doctor.reviews[index],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
