@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Doctor%20Appoinment%20App/View/main_page.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/View/onboard_page.dart';
+import 'package:provider/provider.dart';
+
+import 'Food Delivery App(foodel)/Provider/cart_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +14,16 @@ class MyApp extends StatelessWidget {
   // Root widget of the app
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainPage (),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => CartProvider(),
+        ),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: OnBoardPage(),
+      ),
     );
   }
 }
