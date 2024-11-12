@@ -30,7 +30,6 @@ class ProductItem extends StatelessWidget {
           height: 285,
           width: size.width / 2.4,
           decoration: BoxDecoration(
-            // color: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           child: Padding(
@@ -42,7 +41,6 @@ class ProductItem extends StatelessWidget {
                   angle: 10 * pi / 180,
                   child: SizedBox(
                     height: 160,
-                    // color: Colors.transparent,
                     child: Stack(
                       alignment: AlignmentDirectional.center,
                       children: [

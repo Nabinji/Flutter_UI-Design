@@ -5,14 +5,14 @@ import '../Model/onboard_model.dart';
 import 'main_page.dart';
 
 
-class OnBoardPage extends StatefulWidget {
-  const OnBoardPage({super.key});
+class AppOnBoardPage extends StatefulWidget {
+  const AppOnBoardPage({super.key});
 
   @override
-  State<OnBoardPage> createState() => _OnBoardPageState();
+  State<AppOnBoardPage> createState() => _AppOnBoardPageState();
 }
 
-class _OnBoardPageState extends State<OnBoardPage> {
+class _AppOnBoardPageState extends State<AppOnBoardPage> {
   int currentPage = 0;
   @override
   Widget build(BuildContext context) {
