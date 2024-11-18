@@ -1,9 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import '../consts.dart';
-import '../Model/onboard_model.dart';
-import 'main_page.dart';
-
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/onboard_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/View/main_page.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/consts.dart';
 
 class AppOnBoardPage extends StatefulWidget {
   const AppOnBoardPage({super.key});
@@ -13,10 +12,9 @@ class AppOnBoardPage extends StatefulWidget {
 }
 
 class _AppOnBoardPageState extends State<AppOnBoardPage> {
-  int currentPage = 0;
+  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: kblack,
       body: Stack(
@@ -25,13 +23,14 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
           PageView.builder(
             onPageChanged: (value) {
               setState(() {
-                currentPage = value;
+                currentIndex = value;
               });
             },
             itemCount: onboards.length,
             itemBuilder: (context, index) {
               return Stack(
                 children: [
+                  // for image
                   Positioned(
                     top: -70,
                     left: 0,
@@ -47,9 +46,9 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                     ),
                   ),
                   Positioned(
-                    top: size.height / 1.9,
+                    top: MediaQuery.of(context).size.height / 1.9,
                     child: FadeInUp(
-                       delay: const Duration(milliseconds: 500),
+                      delay: const Duration(milliseconds: 500),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 25),
                         child: Column(
@@ -70,7 +69,7 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                                 color: Colors.white,
                                 fontSize: 24,
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ),
@@ -81,8 +80,8 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
             },
           ),
           Positioned(
-            left: 25,
             bottom: 170,
+            left: 25,
             child: FadeInUp(
               delay: const Duration(milliseconds: 500),
               child: Row(
@@ -95,7 +94,7 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                       width: 50,
                       margin: const EdgeInsets.only(right: 10),
                       decoration: BoxDecoration(
-                        color: currentPage == index
+                        color: currentIndex == index
                             ? Colors.white
                             : Colors.white.withOpacity(0.5),
                         borderRadius: BorderRadius.circular(15),
@@ -127,11 +126,10 @@ class _AppOnBoardPageState extends State<AppOnBoardPage> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
-                    height: 72,
                     minWidth: MediaQuery.of(context).size.width - 50,
                     child: const Center(
                       child: Text(
-                        'Get Started',
+                        "Get Started",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 24,

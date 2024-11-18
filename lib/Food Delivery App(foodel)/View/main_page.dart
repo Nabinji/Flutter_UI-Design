@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../consts.dart';
-import '../Model/bottom_icon_model.dart';
-import 'home_page.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/bottom_icon_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/View/home_page.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/consts.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -11,8 +11,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int currentPage = 0;
-  final List slectedePage = [
+  int currentIndex = 0;
+  final List selectedPage = [
     const HomePage(),
     const Center(child: Text("Message Page")),
     const Center(child: Text("Explore Page")),
@@ -23,7 +23,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       backgroundColor: kbgColor,
       bottomNavigationBar: Container(
-        height: 86,
+        height: 85,
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -33,35 +33,37 @@ class _MainPageState extends State<MainPage> {
               (index) => GestureDetector(
                 onTap: () {
                   setState(() {
-                    currentPage = index;
+                    currentIndex = index;
                   });
                 },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Icon(
-                      currentPage == index
-                          ? bottomIcons[index].selected
-                          : bottomIcons[index].unselected,
-                      color: kblack,
-                    ),
-                    const SizedBox(height: 10),
-                    Container(
-                      decoration: const BoxDecoration(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: Column(
+                    children: [
+                      Icon(
+                        currentIndex == index
+                            ? bottomIcons[index].selected
+                            : bottomIcons[index].unselected,
                         color: kblack,
-                        shape: BoxShape.circle,
                       ),
-                      width: currentPage == index ? 7 : 0,
-                      height: currentPage == index ? 7 : 0,
-                    )
-                  ],
+                      const SizedBox(height: 10),
+                      Container(
+                        decoration: const BoxDecoration(
+                          color: kblack,
+                          shape: BoxShape.circle,
+                        ),
+                        width: currentIndex == index ? 7 : 0,
+                        height: currentIndex == index ? 7 : 0,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
-      body: slectedePage[currentPage],
+      body: selectedPage[currentIndex],
     );
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/category_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/product_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Provider/cart_provider.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/View/cart.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Widgets/food_product_items.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/consts.dart';
 import 'package:provider/provider.dart';
-import '../consts.dart';
-import '../Model/product_model.dart';
-import '../Provider/cart_provider.dart';
-import '../Widgets/product_item.dart';
-import 'cart_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -15,28 +15,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // int selectedIndex = 0;
   String category = "";
-  List<MyProductModel> productModel = []; // Start with an empty list
-
+  List<MyProductModel> productModel = []; // start iwth an empty list
   @override
   void initState() {
     super.initState();
-    // Set the initial category to the first item in myCategories
+    // set the initial category to the first item in myCategories and initially display the first category
     if (myCategories.isNotEmpty) {
       category = myCategories[0].name;
-      // Display items for the first category initially
-      filterProductsByCategory(category);
+      filterProductByCategory(category);
     }
   }
 
-  void filterProductsByCategory(String selectedCategory) {
+  void filterProductByCategory(String selectedCayegory) {
     setState(() {
-      category = selectedCategory;
+      category = selectedCayegory;
       productModel = myProductModel
           .where(
             (element) =>
                 element.category.toLowerCase() ==
-                selectedCategory.toLowerCase(),
+                selectedCayegory.toLowerCase(),
           )
           .toList();
     });
@@ -59,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                       Row(
                         children: [
                           Text(
-                            'Your Location',
+                            "Your Location",
                             style: TextStyle(
                               fontSize: 15,
                               color: Colors.black45,
@@ -67,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Icon(
-                            Icons.keyboard_arrow_down_rounded,
+                            Icons.keyboard_arrow_down,
                             color: kblack,
                             size: 20,
                           )
@@ -83,13 +82,13 @@ class _HomePageState extends State<HomePage> {
                           ),
                           SizedBox(width: 5),
                           Text(
-                            'Shibuya, Japan',
+                            "Nabin, Nepal",
                             style: TextStyle(
                               fontSize: 16,
                               color: kblack,
                               fontWeight: FontWeight.w600,
                             ),
-                          ),
+                          )
                         ],
                       ),
                     ],
@@ -118,7 +117,9 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.all(10),
                           margin: const EdgeInsets.symmetric(vertical: 15),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black12),
+                            border: Border.all(
+                              color: Colors.black12,
+                            ),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Icon(
@@ -135,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => const CartPage(),
+                                        builder: (context) => const Cart(),
                                       ),
                                     );
                                   },
@@ -155,11 +156,11 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               )
-                            : Container()
+                            : Container(),
                       ],
-                    )
+                    ),
                   ],
-                )
+                ),
               ],
             ),
           ),
@@ -169,10 +170,10 @@ class _HomePageState extends State<HomePage> {
             child: Text(
               "Let's finds the best food around you",
               style: TextStyle(
-                color: kblack,
-                letterSpacing: -.4,
-                fontSize: 34,
+                fontSize: 35,
                 fontWeight: FontWeight.bold,
+                letterSpacing: -.4,
+                color: kblack,
               ),
             ),
           ),
@@ -184,7 +185,7 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  'Find by Category',
+                  "Find by Category",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.w600,
@@ -192,71 +193,76 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Text(
-                  'See All',
-                  style: TextStyle(color: Colors.orange),
+                  "See All",
+                  style: TextStyle(
+                    color: Colors.orange,
+                  ),
                 )
               ],
             ),
           ),
           const SizedBox(height: 25),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ...List.generate(
                   myCategories.length,
-                  (index) => GestureDetector(
-                    onTap: () {
-                      filterProductsByCategory(myCategories[index].name);
-                    },
-                    child: Container(
-                      height: 105,
-                      width: 78,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: category == myCategories[index].name
-                            ? Border.all(width: 2.5, color: korange)
-                            : Border.all(color: Colors.white),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Stack(
-                            alignment: AlignmentDirectional.center,
-                            children: [
-                              Container(
-                                height: 30,
-                                width: 46,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: kblack.withOpacity(0.4),
-                                      offset: const Offset(0, 10),
-                                      blurRadius: 12,
-                                      spreadRadius: 5,
-                                    )
-                                  ],
+                  (index) => Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        filterProductByCategory(myCategories[index].name);
+                      },
+                      child: Container(
+                        height: 120,
+                        width: 85,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          border: category == myCategories[index].name
+                              ? Border.all(width: 2.5, color: korange)
+                              : Border.all(color: Colors.white),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(
+                              alignment: AlignmentDirectional.center,
+                              children: [
+                                Container(
+                                  height: 30,
+                                  width: 47,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: kblack.withOpacity(0.4),
+                                        offset: const Offset(0, 10),
+                                        blurRadius: 12,
+                                        spreadRadius: 5,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Image.asset(
-                                myCategories[index].image,
-                                width: 46,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 20),
-                          Text(
-                            myCategories[index].name,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              color: kblack,
+                                Image.asset(
+                                  myCategories[index].image,
+                                  width: 50,
+                                  fit: BoxFit.cover,
+                                )
+                              ],
                             ),
-                          )
-                        ],
+                            const SizedBox(height: 20),
+                            Text(
+                              myCategories[index].name,
+                              style: const TextStyle(
+                                color: kblack,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -268,34 +274,34 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Text(
-              'Result (${productModel.length})',
+              "Result (${productModel.length})",
               style: TextStyle(
                 color: kblack.withOpacity(0.6),
                 fontWeight: FontWeight.bold,
-                letterSpacing: -0.2,
+                letterSpacing: -.2,
               ),
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 20),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             child: Row(
-              children:[
+              children: [
                 ...List.generate(
                   productModel.length,
                   (index) => Padding(
                     padding: index == 0
                         ? const EdgeInsets.only(left: 25, right: 25)
                         : const EdgeInsets.only(right: 25),
-                    child: ProductItem(
-                      product: productModel[index],
+                    child: FoodProductItems(
+                      productModel: productModel[index],
                     ),
                   ),
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,16 +1,14 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../Model/cart_model.dart';
-import '../consts.dart';
-import '../Provider/cart_provider.dart';
 
-class CartItem extends StatelessWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/cart_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Provider/cart_provider.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/consts.dart';
+import 'package:provider/provider.dart';
+
+class CartItems extends StatelessWidget {
   final CartModel cart;
-  const CartItem({
-    super.key,
-    required this.cart,
-  });
+  const CartItems({super.key, required this.cart});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +34,8 @@ class CartItem extends StatelessWidget {
             child: Transform.rotate(
               angle: 10 * pi / 180,
               child: SizedBox(
-                width: 130,
                 height: 130,
+                width: 130,
                 child: Stack(
                   alignment: AlignmentDirectional.center,
                   children: [
@@ -53,7 +51,7 @@ class CartItem extends StatelessWidget {
                               color: kblack.withOpacity(0.4),
                               blurRadius: 10,
                               spreadRadius: 5,
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -61,7 +59,7 @@ class CartItem extends StatelessWidget {
                     Image.asset(
                       cart.productModel.image,
                       width: 130,
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -97,7 +95,7 @@ class CartItem extends StatelessWidget {
                         Text(
                           cart.productModel.rate.toString(),
                           style: TextStyle(
-                            color: kblack.withOpacity(.8),
+                            color: kblack.withOpacity(0.8),
                           ),
                         ),
                       ],
@@ -105,14 +103,17 @@ class CartItem extends StatelessWidget {
                     const SizedBox(width: 20),
                     Row(
                       children: [
-                        const Icon(Icons.location_on, color: kpink, size: 20),
-                        const SizedBox(width: 5),
+                        const Icon(
+                          Icons.location_on,
+                          color: kpink,
+                          size: 20,
+                        ),
                         Text(
                           "${cart.productModel.distance}m",
                           style: TextStyle(
-                            color: kblack.withOpacity(.8),
+                            color: kblack.withOpacity(0.8),
                           ),
-                        ),
+                        )
                       ],
                     ),
                   ],
@@ -123,10 +124,11 @@ class CartItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '\$${(cart.productModel.price).toStringAsFixed(2)}',
+                      "\$${(cart.productModel.price).toStringAsFixed(2)}",
                       style: const TextStyle(
                         color: kblack,
-                        fontSize: 25,letterSpacing: -1,
+                        fontSize: 25,
+                        letterSpacing: -1,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -135,7 +137,7 @@ class CartItem extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             if (cart.quantity > 1) {
-                              cartProvider.reduceQuantity(cart.productModel);
+                              cartProvider.recuceQuantity(cart.productModel);
                             }
                           },
                           child: Container(
@@ -183,7 +185,7 @@ class CartItem extends StatelessWidget {
                               size: 20,
                             ),
                           ),
-                        )
+                        ),
                       ],
                     )
                   ],

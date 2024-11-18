@@ -1,20 +1,20 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/product_model.dart';
-import 'package:provider/provider.dart';
-import '../consts.dart';
-import '../Provider/cart_provider.dart';
 
-class ProductItem extends StatelessWidget {
-  final MyProductModel product;
-  const ProductItem({
-    super.key,
-    required this.product,
-  });
+import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Doctor%20Appoinment%20App/const.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Model/product_model.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/Provider/cart_provider.dart';
+import 'package:flutter_ui_design/Food%20Delivery%20App(foodel)/consts.dart';
+import 'package:provider/provider.dart';
+
+class FoodProductItems extends StatelessWidget {
+  final MyProductModel productModel;
+  const FoodProductItems({super.key, required this.productModel});
+
   @override
   Widget build(BuildContext context) {
-    CartProvider cartProvider = Provider.of<CartProvider>(context);
     Size size = MediaQuery.of(context).size;
+    CartProvider cartProvider = Provider.of<CartProvider>(context);
     return Stack(
       alignment: AlignmentDirectional.bottomCenter,
       children: [
@@ -50,27 +50,28 @@ class ProductItem extends StatelessWidget {
                             height: 50,
                             width: 100,
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: kblack.withOpacity(0.3),
-                                    spreadRadius: 10,
-                                    blurRadius: 30,
-                                  )
-                                ]),
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: black.withOpacity(0.3),
+                                  spreadRadius: 10,
+                                  blurRadius: 30,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Image.asset(
-                          product.image,
+                          productModel.image,
                           height: 150,
-                        ),
+                        )
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  product.name,
+                  productModel.name,
                   maxLines: 1,
                   style: const TextStyle(
                     fontSize: 19,
@@ -90,12 +91,11 @@ class ProductItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          product.rate.toString(),
+                          productModel.rate.toString(),
                           style: TextStyle(
                             color: kblack.withOpacity(.5),
-                            fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        )
                       ],
                     ),
                     const SizedBox(width: 10),
@@ -108,25 +108,25 @@ class ProductItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 5),
                         Text(
-                          "${product.distance}m",
+                          "${productModel.distance}m",
                           style: TextStyle(
-                            color: kblack.withOpacity(.5),
+                            color: kblack.withOpacity(0.5),
                             fontWeight: FontWeight.bold,
                           ),
-                        ),
+                        )
                       ],
-                    ),
+                    )
                   ],
                 ),
                 const SizedBox(height: 20),
                 Text(
-                  '\$${(product.price).toStringAsFixed(2)}',
+                  "\$${(productModel.price).toStringAsFixed(2)}",
                   style: const TextStyle(
                     color: kblack,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
-                ),
+                )
               ],
             ),
           ),
@@ -136,7 +136,7 @@ class ProductItem extends StatelessWidget {
           right: 0,
           child: GestureDetector(
             onTap: () {
-              cartProvider.addCart(product);
+              cartProvider.addCart(productModel);
             },
             child: Container(
               padding: const EdgeInsets.all(12),
@@ -150,11 +150,11 @@ class ProductItem extends StatelessWidget {
               child: const Icon(
                 Icons.shopping_cart_outlined,
                 color: Colors.white,
-                size: 24,
+                size: 25,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

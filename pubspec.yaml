@@ -54,6 +54,8 @@ dependencies:
   provider: ^6.1.2
   dotted_line: ^3.2.3
   animate_do: ^3.3.4
+  flutter_svg: ^2.0.14
+  fl_chart: ^0.69.0
 
 dev_dependencies:
   flutter_test:
@@ -94,6 +96,7 @@ flutter:
     - assets/food-delivery(foodel)/
     - assets/food-delivery(foodel)/ramen/
     - assets/food-delivery(foodel)/burger/
+    - assets/dashoboard/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
