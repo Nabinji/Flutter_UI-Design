@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/component/bar_chart.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/style/colors.dart';
-import 'component/app_bar_items.dart';
-import 'component/header.dart';
-import 'component/historyTable.dart';
-import 'component/infoCard.dart';
-import 'component/payment_detail_list.dart';
-import 'component/side_menu.dart';
-import 'config/responsive.dart';
-import 'config/size_config.dart';
-import 'Model/data.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Component/bar_chart.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Utils/colors.dart';
+import 'Component/app_bar_items.dart';
+import 'Component/header.dart';
+import 'Component/history_table.dart';
+import 'Component/info_card.dart';
+import 'Component/payment_detail_list.dart';
+import 'Component/side_menu.dart';
+import 'Config/responsive.dart';
+import 'Config/size_config.dart';
+import 'Model/model.dart';
 
 class MyDashboard extends StatelessWidget {
   final GlobalKey<ScaffoldState> drawerKey = GlobalKey();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../style/colors.dart';
+import '../Utils/colors.dart';
 
 class PaymentListTile extends StatelessWidget {
   final String icon;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../Model/data.dart';
-import '../config/responsive.dart';
-import '../config/size_config.dart';
-import '../style/colors.dart';
+import '../Model/model.dart';
+import '../Config/responsive.dart';
+import '../Config/size_config.dart';
+import '../Utils/colors.dart';
 
 class HistoryTable extends StatefulWidget {
   const HistoryTable({

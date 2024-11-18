@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/style/colors.dart';
-import '../config/responsive.dart';
+import '../Config/responsive.dart';
+import '../Utils/colors.dart';
 
 class Header extends StatelessWidget {
   const Header({

@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/style/colors.dart';
-import '../Model/data.dart';
-import '../config/size_config.dart';
+import '../Model/model.dart';
+import '../Config/size_config.dart';
+import '../Utils/colors.dart';
 
 class SideMenu extends StatefulWidget {
   const SideMenu({super.key});

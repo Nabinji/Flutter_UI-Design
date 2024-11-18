@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/style/colors.dart';
-import '../config/size_config.dart';
-import '../Model/data.dart';
+import '../Config/size_config.dart';
+import '../Model/model.dart';
+import '../Utils/colors.dart';
 import 'payment_list_tile.dart';
 
 class PaymentDetailList extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/Model/data.dart';
-import '../config/responsive.dart';
-import '../config/size_config.dart';
-import '../style/colors.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Model/model.dart';
+import '../Config/responsive.dart';
+import '../Config/size_config.dart';
+import '../Utils/colors.dart';
 
 class InfoCard extends StatelessWidget {
   final InfoCardModel infoCardModel;
