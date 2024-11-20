@@ -14,9 +14,9 @@ class Responsive extends StatelessWidget {
   /// Constructor to initialize the widgets for each screen size.
   const Responsive({
     super.key,
-    required this.mobile, 
-    this.tablet, 
-    required this.desktop, 
+    required this.mobile,
+    this.tablet,
+    required this.desktop,
   });
 
   /// Static helper method to check if the current screen is a mobile device.

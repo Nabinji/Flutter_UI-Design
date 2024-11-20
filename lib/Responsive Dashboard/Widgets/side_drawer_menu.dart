@@ -3,17 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../Model/model.dart';
-import '../Config/size_config.dart';
 import '../Utils/colors.dart';
 
-class SideMenu extends StatefulWidget {
-  const SideMenu({super.key});
+class SideDrawerMenu extends StatefulWidget {
+  const SideDrawerMenu({super.key});
 
   @override
-  _SideMenuState createState() => _SideMenuState();
+  _SideDrawerMenuState createState() => _SideDrawerMenuState();
 }
 
-class _SideMenuState extends State<SideMenu> {
+class _SideDrawerMenuState extends State<SideDrawerMenu> {
   int selectedIndex = 0; // Track the selected menu item
 
   @override
@@ -22,7 +21,7 @@ class _SideMenuState extends State<SideMenu> {
       elevation: 0,
       child: Container(
         width: double.infinity,
-        height: SizeConfig.screenHeight,
+        // height: SizeConfig.screenHeight,
         decoration: const BoxDecoration(color: MyAppColor.secondaryBg),
         child: SingleChildScrollView(
           child: Column(
@@ -44,7 +43,7 @@ class _SideMenuState extends State<SideMenu> {
                 return GestureDetector(
                   onTap: () {
                     setState(() {
-                      selectedIndex = index; // Update the selected index
+                      selectedIndex = index;
                     });
                   },
                   child: Container(

@@ -3,9 +3,8 @@ import 'package:fl_chart/fl_chart.dart';
 import '../Config/responsive.dart';
 import '../Utils/colors.dart';
 
-
-class BarChartComponent extends StatelessWidget {
-  const BarChartComponent({super.key});
+class BarChartRepresentation extends StatelessWidget {
+  const BarChartRepresentation({super.key});
 
   @override
   Widget build(BuildContext context) {

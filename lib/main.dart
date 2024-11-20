@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Responsive%20Dashboard/dashboard.dart';
 
-
 void main() {
   runApp(const MyApp());
 }

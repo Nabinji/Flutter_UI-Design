@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_ui_design/Responsive%20Dashboard/Model/model.dart';
-import '../Config/responsive.dart';
-import '../Config/size_config.dart';
-import '../Utils/colors.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Utils/colors.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/config/responsive.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/config/size_config.dart';
 
-class InfoCard extends StatelessWidget {
+class TransferInfoCard extends StatelessWidget {
   final InfoCardModel infoCardModel;
-  const InfoCard({
-    super.key,
-    required this.infoCardModel,
-  });
+  const TransferInfoCard({super.key, required this.infoCardModel});
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Container(
       constraints: BoxConstraints(
         minWidth: Responsive.isDesktop(context)
-            ? MediaQuery.of(context).size.width/7
+            ? MediaQuery.of(context).size.width / 7
             : SizeConfig.screenWidth / 2 - 40,
       ),
       padding: EdgeInsets.only(
@@ -32,9 +30,7 @@ class InfoCard extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: [
-        
           SvgPicture.asset(infoCardModel.icon, width: 35),
           SizedBox(
             height: SizeConfig.blockSizeVertical * 2,
@@ -47,16 +43,16 @@ class InfoCard extends StatelessWidget {
               color: MyAppColor.secondary,
             ),
           ),
-          SizedBox(
+           SizedBox(
             height: SizeConfig.blockSizeVertical * 2,
           ),
-          Text(
+           Text(
             infoCardModel.amount,
             style: const TextStyle(
               fontSize: 18,
               height: 1.3,
-              fontWeight: FontWeight.w700,
               color: Colors.black,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

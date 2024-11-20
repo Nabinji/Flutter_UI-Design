@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/Component/bar_chart.dart';
 import 'package:flutter_ui_design/Responsive%20Dashboard/Utils/colors.dart';
-import 'Component/app_bar_items.dart';
-import 'Component/header.dart';
-import 'Component/history_table.dart';
-import 'Component/info_card.dart';
-import 'Component/payment_detail_list.dart';
-import 'Component/side_menu.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/bar_chart.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/header_action_items.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/header_parts.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/payment_detail_info.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/show_history.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/side_drawer_menu.dart';
+import 'package:flutter_ui_design/Responsive%20Dashboard/Widgets/transfer_info_card.dart';
 import 'Config/responsive.dart';
 import 'Config/size_config.dart';
 import 'Model/model.dart';
@@ -22,7 +22,7 @@ class MyDashboard extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyAppColor.backgroundColor,
       key: drawerKey,
-      drawer: const SizedBox(width: 100, child: SideMenu()),
+      drawer: const SizedBox(width: 100, child: SideDrawerMenu()),
       appBar: !Responsive.isDesktop(context)
           ? AppBar(
               elevation: 0,
@@ -34,7 +34,7 @@ class MyDashboard extends StatelessWidget {
                 icon: const Icon(Icons.menu, color: Colors.black),
               ),
               actions: const [
-                AppBarActionItems(),
+                HeaderActionItems(),
               ],
             )
           : const PreferredSize(
@@ -48,7 +48,7 @@ class MyDashboard extends StatelessWidget {
             if (Responsive.isDesktop(context))
               const Expanded(
                 flex: 1,
-                child: SideMenu(),
+                child: SideDrawerMenu(),
               ),
             Expanded(
               flex: 10,
@@ -60,7 +60,7 @@ class MyDashboard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // for dashboard text, search bar
-                      const Header(),
+                      const HeaderParts(),
                       SizedBox(
                         height: SizeConfig.blockSizeVertical * 4,
                       ),
@@ -73,7 +73,7 @@ class MyDashboard extends StatelessWidget {
                           alignment: WrapAlignment.spaceBetween,
                           // Dynamically map over infoCardData
                           children: infoCardData.map((info) {
-                            return InfoCard(infoCardModel: info);
+                            return TransferInfoCard(infoCardModel: info);
                           }).toList(),
                         ),
                       ),
@@ -121,7 +121,7 @@ class MyDashboard extends StatelessWidget {
                       ),
                       const SizedBox(
                         height: 180,
-                        child: BarChartComponent(),
+                        child: BarChartRepresentation(),
                       ),
                       SizedBox(
                         height: SizeConfig.blockSizeVertical * 5,
@@ -151,9 +151,9 @@ class MyDashboard extends StatelessWidget {
                       SizedBox(
                         height: SizeConfig.blockSizeVertical * 3,
                       ),
-                      const HistoryTable(),
+                      const ShowHistory(),
                       if (!Responsive.isDesktop(context))
-                        const PaymentDetailList()
+                        const PaymentDetailInfo()
                     ],
                   ),
                 ),
@@ -172,10 +172,7 @@ class MyDashboard extends StatelessWidget {
                       padding:
                           EdgeInsets.symmetric(vertical: 30, horizontal: 30),
                       child: Column(
-                        children: [
-                          AppBarActionItems(),
-                          PaymentDetailList(),
-                        ],
+                        children: [HeaderActionItems(), PaymentDetailInfo()],
                       ),
                     ),
                   ),
