@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Responsive%20Dashboard/dashboard.dart';
+import 'package:flutter_ui_design/Coffee%20Shop%20App%20UI/pages/onboard_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +11,9 @@ class MyApp extends StatelessWidget {
   // Root widget of the app
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyDashboard(),
+      home: SplashScreen()
     );
   }
 }

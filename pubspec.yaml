@@ -56,6 +56,8 @@ dependencies:
   animate_do: ^3.3.4
   flutter_svg: ^2.0.14
   fl_chart: ^0.69.0
+  flutter_cached_pdfview: ^0.4.3
+  gap: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -97,6 +99,8 @@ flutter:
     - assets/food-delivery(foodel)/ramen/
     - assets/food-delivery(foodel)/burger/
     - assets/dashoboard/
+    - assets/pdf/
+    - assets/coffee-shop/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
