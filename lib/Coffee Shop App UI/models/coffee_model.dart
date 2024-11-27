@@ -17,7 +17,7 @@ class Coffee {
   });
 }
 
-final listGridCoffee = [
+final listOfCoffee = [
   Coffee(
     image: 'assets/coffee-shop/coffee4.png',
     name: 'Caffee Mocha',
@@ -75,5 +75,5 @@ final coffeeCategories = [
   'Machiato',
   'Latte',
   'Americano',
-  'cappuccino',
+  'Cappuccino',
 ];

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Coffee%20Shop%20App%20UI/pages/onboard_page.dart';
+import 'package:flutter_ui_design/Coffee%20Shop%20App%20UI/pages/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());

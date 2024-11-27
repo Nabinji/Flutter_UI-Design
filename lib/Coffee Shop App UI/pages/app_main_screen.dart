@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Coffee%20Shop%20App%20UI/colors.dart';
-import 'package:gap/gap.dart';
-import '../models/icon_model.dart';
+import 'package:flutter_ui_design/Coffee%20Shop%20App%20UI/models/icon_model.dart';
 
 class CoffeeAppMainScreen extends StatefulWidget {
   const CoffeeAppMainScreen({super.key});
@@ -12,52 +11,51 @@ class CoffeeAppMainScreen extends StatefulWidget {
 
 class _CoffeeAppMainScreenState extends State<CoffeeAppMainScreen> {
   int indexMenu = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:xbackgroundColor ,
       body: menu[indexMenu]['destination'] as Widget,
+      backgroundColor: xbackgroundColor,
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Row(
-          children: List.generate(menu.length, (index) {
-            Map item = menu[index];
-            bool isActive = indexMenu == index;
-            return Expanded(
-              child: InkWell(
-                onTap: () {
+            children: List.generate(menu.length, (index) {
+          Map items = menu[index];
+          bool isActive = indexMenu == index;
+          return Expanded(
+            child: InkWell(
+              onTap: () {
+                setState(() {
                   indexMenu = index;
-                  setState(() {});
-                },
-                child: SizedBox(
-                  height: 70,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Gap(20),
-                      Icon(
-                        item['icon'],
-                        color:isActive?xprimaryColor:xsecondaryColor,
-                        size: 24,
-                      ),
-                      if (isActive) const Gap(6),
-                      if (isActive)
-                        Container(
-                          height: 5,
-                          width: 10,
-                          decoration: BoxDecoration(
-                            color: xprimaryColor,
-                            borderRadius: BorderRadius.circular(18),
-                          ),
+                });
+              },
+              child: SizedBox(
+                height: 70,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 20),
+                    Icon(
+                      items['icon'],
+                      color: isActive ? xprimaryColor : xsecondaryColor,
+                      size: 25,
+                    ),
+                    if (isActive) const SizedBox(height: 7),
+                    if (isActive)
+                      Container(
+                        height: 5,
+                        width: 15,
+                        decoration: BoxDecoration(
+                          color: xprimaryColor,
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                    ],
-                  ),
+                      ),
+                  ],
                 ),
               ),
-            );
-          }),
-        ),
+            ),
+          );
+        })),
       ),
     );
   }
