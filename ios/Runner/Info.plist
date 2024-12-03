@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>For File Picker</string>
+	<key>NSCameraUsageDescription</key>
+	<string>For File Picker</string>
 	<key>CFBundleDisplayName</key>
 	<string>Flutter Ui Design</string>
 	<key>CFBundleExecutable</key>
