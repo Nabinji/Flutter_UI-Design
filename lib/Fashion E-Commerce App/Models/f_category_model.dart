@@ -25,3 +25,12 @@ List<FCategory> fcategory = [
     image: "assets/fashion/baby.png",
   ),
 ];
+
+List<String> filterCategory = [
+  "Filter",
+  "Ratings",
+  "Size",
+  "Color",
+  "Price",
+  "Brand",
+];

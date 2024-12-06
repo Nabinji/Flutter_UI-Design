@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/AI%20Bot/ai_chat_bot.dart';
+import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Views/fapp_main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ImageChat(),
+      home: FappMainScreen(),
     );
   }
 }

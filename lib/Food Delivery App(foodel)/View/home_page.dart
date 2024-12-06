@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // int selectedIndex = 0;
   String category = "";
-  List<MyProductModel> productModel = []; // start iwth an empty list
+  List<MyProductModel> productModel = []; // start with an empty list
   @override
   void initState() {
     super.initState();

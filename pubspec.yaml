@@ -104,6 +104,8 @@ flutter:
     - assets/pdf/
     - assets/coffee-shop/
     - assets/fashion/
+    - assets/fashion/category_image/
+    - assets/fashion/category_image/sub_category/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

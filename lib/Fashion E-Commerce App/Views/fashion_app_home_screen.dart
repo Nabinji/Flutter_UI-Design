@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Models/f_category_model.dart';
 import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Models/f_model.dart';
 import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Utils/colors.dart';
+import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Views/category_items.dart';
 import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Views/f_items_details.dart';
 import 'package:flutter_ui_design/Fashion%20E-Commerce%20App/Widgets/banner.dart';
 import 'package:iconsax/iconsax.dart';
+import '../Widgets/curated_items.dart';
 
 class FashionAppHomeScreen extends StatefulWidget {
   const FashionAppHomeScreen({super.key});
@@ -14,6 +16,9 @@ class FashionAppHomeScreen extends StatefulWidget {
 }
 
 class _FashionAppHomeScreenState extends State<FashionAppHomeScreen> {
+  String category = "";
+  List<FappModel> fproductModel = [];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -100,26 +105,48 @@ class _FashionAppHomeScreenState extends State<FashionAppHomeScreen> {
               child: Row(
                 children: List.generate(
                   fcategory.length,
-                  (index) => Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: fbackgroundColor1,
-                          backgroundImage: AssetImage(
-                            fcategory[index].image,
+                  (index) => InkWell(
+                 onTap: () {
+                      // Filter products based on the selected category
+                      final filteredItems = fashionEcommerceApp
+                          .where((item) =>
+                              item.category.toLowerCase() ==
+                              fcategory[index].name.toLowerCase())
+                          .toList();
+
+                      // Navigate to the CategoryItems screen with the filtered list
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CategoryItems(
+                            fcategoryItems: filteredItems,
+                            category: fcategory[index].name.toLowerCase(),
+                           
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        fcategory[index].name,
-                        style: const TextStyle(
-                          fontSize: 14,
+                      );
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: fbackgroundColor1,
+                            backgroundImage: AssetImage(
+                              fcategory[index].image,
+                            ),
+                          ),
                         ),
-                      )
-                    ],
+                        const SizedBox(height: 10),
+                        Text(
+                          fcategory[index].name,
+                          style: const TextStyle(
+                            fontSize: 14,
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -163,97 +190,15 @@ class _FashionAppHomeScreenState extends State<FashionAppHomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => const FItemsDetails(),
+                            builder: (_) => FItemsDetails(
+                              fEcommerceApp: eCommerceItems,
+                            ),
                           ),
                         );
                       },
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              image:
-                                  const DecorationImage(image: AssetImage("")),
-                              color: fbackgroundColor2,
-                            ),
-                            height: size.height * 0.25,
-                            width: size.width * 0.5,
-                            child: const Padding(
-                              padding: EdgeInsets.all(12.0),
-                              child: Align(
-                                alignment: Alignment.topRight,
-                                child: CircleAvatar(
-                                  radius: 18,
-                                  backgroundColor: Colors.black26,
-                                  child: Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 7),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              const Text(
-                                "H&M",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.black26,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              const Icon(
-                                Icons.star,
-                                color: Colors.amber,
-                                size: 17,
-                              ),
-                              Text(eCommerceItems.rating.toString()),
-                              Text(
-                                "(${eCommerceItems.review})",
-                                style: const TextStyle(color: Colors.black26),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            width: size.width * 0.5,
-                            child: Text(
-                              eCommerceItems.name,
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                height: 1.5,
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\$${eCommerceItems.price.toString()}.00",
-                                style: const TextStyle(
-                                  color: Colors.pink,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 18,
-                                  height: 1.5,
-                                ),
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                "\$${eCommerceItems.price.toString()}.00",
-                                style: const TextStyle(
-                                  color: Colors.black26,
-                                  decoration: TextDecoration.lineThrough,
-                                  decorationColor: Colors.black38,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
+                      child: CuratedItems(
+                        eCommerceItems: eCommerceItems,
+                        size: size,
                       ),
                     ),
                   );
