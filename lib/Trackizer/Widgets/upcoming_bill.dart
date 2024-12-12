@@ -23,7 +23,7 @@ class UpcomingBill extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
-              color: TColor.border.withOpacity(0.15),
+              color:border.withOpacity(0.15),
             ),
             borderRadius: BorderRadius.circular(16),
           ),
@@ -35,7 +35,7 @@ class UpcomingBill extends StatelessWidget {
                 width: 45,
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color: TColor.gray70.withOpacity(0.5),
+                  color:gray70.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: Alignment.center,
@@ -44,7 +44,7 @@ class UpcomingBill extends StatelessWidget {
                     Text(
                       "Jun",
                       style: TextStyle(
-                        color: TColor.gray30,
+                        color:gray30,
                         fontSize: 10,
                         fontWeight: FontWeight.w500,
                       ),
@@ -52,7 +52,7 @@ class UpcomingBill extends StatelessWidget {
                     Text(
                       "25",
                       style: TextStyle(
-                        color: TColor.gray30,
+                        color:gray30,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),

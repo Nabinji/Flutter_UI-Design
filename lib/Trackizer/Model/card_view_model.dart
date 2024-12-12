@@ -32,37 +32,3 @@ final List<VirtualCardModel> virtualCards = [
     monthYear: "05/27",
   ),
 ];
-
-// class SubscriptionModel {
-//   final String name;
-//   final String icon;
-//   final String price;
-
-//   SubscriptionModel({
-//     required this.name,
-//     required this.icon,
-//     required this.price,
-//   });
-// }
-
-
-// final List<SubscriptionModel> subscriptions = [
-//   SubscriptionModel(
-//     name: "Spotify",
-//     icon: "assets/img/spotify_logo.png",
-//     price: "5.99",
-//   ),
-//   SubscriptionModel(
-//       name: "YouTube Premium",
-//       icon: "assets/img/youtube_logo.png",
-//       price: "18.99"),
-//   SubscriptionModel(
-//       name: "Microsoft OneDrive",
-//       icon: "assets/img/onedrive_logo.png",
-//       price: "29.99"),
-//   SubscriptionModel(
-//     name: "NetFlix",
-//     icon: "assets/img/netflix_logo.png",
-//     price: "15.00",
-//   ),
-// ];
