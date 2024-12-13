@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../Utils/color.dart';
-import 'cards_view.dart';
-import 'home_view.dart';
-import 'spending_budgets_view.dart';
+import 'package:flutter_ui_design/Trackizer/Utils/color.dart';
+import 'package:flutter_ui_design/Trackizer/View/card_view.dart';
+import 'package:flutter_ui_design/Trackizer/View/home_screen_trackizer.dart';
+import 'package:flutter_ui_design/Trackizer/View/spending_and_budgets.dart';
 
 class AppMainScreen extends StatefulWidget {
   const AppMainScreen({super.key});
@@ -12,17 +12,17 @@ class AppMainScreen extends StatefulWidget {
 }
 
 class _AppMainScreenState extends State<AppMainScreen> {
-  int selectedTab = 0;
-  final PageStorageBucket _bucket = PageStorageBucket();
+  int selectedIndex = 0;
+  final PageStorageBucket _pageStorageBucket = PageStorageBucket();
   final List<Widget> _tabs = [
-    const HomeView(),
-    const SpendingBudgetsView(),
+    const HomeScreenTrackizer(),
+    const SpendingAndBudgets(),
     const Scaffold(),
-    const CardsView(),
+    const CardView(),
   ];
-  void _onTabSelected(int index) {
+  void onTabSelected(int index) {
     setState(() {
-      selectedTab = index;
+      selectedIndex = index;
     });
   }
 
@@ -33,15 +33,15 @@ class _AppMainScreenState extends State<AppMainScreen> {
       body: Stack(
         children: [
           PageStorage(
-            bucket: _bucket,
-            child: _tabs[selectedTab],
+            bucket: _pageStorageBucket,
+            child: _tabs[selectedIndex],
           ),
           SafeArea(
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                 child: Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
@@ -49,23 +49,20 @@ class _AppMainScreenState extends State<AppMainScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _buildTabIcon(
+                        builldTabIcon(
                           iconPath: "assets/img/home.png",
                           index: 0,
                         ),
-                        _buildTabIcon(
+                        builldTabIcon(
                           iconPath: "assets/img/budgets.png",
                           index: 1,
                         ),
-                        const SizedBox(
-                          width: 50,
-                          height: 50,
-                        ),
-                        _buildTabIcon(
+                        const SizedBox(width: 50, height: 50),
+                        builldTabIcon(
                           iconPath: "assets/img/calendar.png",
                           index: 2,
                         ),
-                        _buildTabIcon(
+                        builldTabIcon(
                           iconPath: "assets/img/creditcards.png",
                           index: 3,
                         ),
@@ -77,30 +74,29 @@ class _AppMainScreenState extends State<AppMainScreen> {
                         margin: const EdgeInsets.all(20),
                         child: Image.asset(
                           "assets/img/center_btn.png",
-                          width: 55,
                           height: 55,
+                          width: 55,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildTabIcon({required String iconPath, required int index}) {
-    return IconButton(
-      onPressed: () => _onTabSelected(index),
-      icon: Image.asset(
-        iconPath,
-        width: 23,
-        height: 23,
-        color: selectedTab == index ? Colors.white : gray30,
-      ),
-    );
-  }
+  IconButton builldTabIcon({required String iconPath, required int index}) =>
+      IconButton(
+        onPressed: ()=> onTabSelected(index),
+        icon: Image.asset(
+          iconPath,
+          width: 23,
+          height: 23,
+          color: selectedIndex == index ? Colors.white : gray30,
+        ),
+      );
 }

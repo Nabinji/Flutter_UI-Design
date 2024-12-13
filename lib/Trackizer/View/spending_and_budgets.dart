@@ -1,24 +1,28 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import '../Model/budget_model.dart';
-import '../Utils/color.dart';
-import '../Widgets/budget_items.dart';
-import '../Widgets/custom_arc_180_painter.dart';
+import 'package:flutter_ui_design/Trackizer/Model/budget_model.dart';
+import 'package:flutter_ui_design/Trackizer/Utils/color.dart';
+import 'package:flutter_ui_design/Trackizer/Widgets/budget_items.dart';
+import 'package:flutter_ui_design/Trackizer/Widgets/custom_arc_180_painter.dart';
 
-class SpendingBudgetsView extends StatelessWidget {
-  const SpendingBudgetsView({super.key});
+class SpendingAndBudgets extends StatefulWidget {
+  const SpendingAndBudgets({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final media = MediaQuery.sizeOf(context);
+  State<SpendingAndBudgets> createState() => _SpendingAndBudgetsState();
+}
 
+class _SpendingAndBudgetsState extends State<SpendingAndBudgets> {
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: gray,
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 30, right: 10),
+              padding: const EdgeInsets.only(top: 35, right: 10),
               child: Row(
                 children: [
                   const Spacer(),
@@ -36,7 +40,8 @@ class SpendingBudgetsView extends StatelessWidget {
             const Text(
               "Spending & Budgets",
               style: TextStyle(
-                color: Colors.white54,
+                color: Colors.white30,
+                fontWeight: FontWeight.w600,
                 fontSize: 18,
               ),
             ),
@@ -44,8 +49,8 @@ class SpendingBudgetsView extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               children: [
                 SizedBox(
-                  width: media.width * 0.5,
-                  height: media.width * 0.30,
+                  width: size.width * 0.5,
+                  height: size.width * 0.32,
                   child: CustomPaint(
                     painter: CustomArc180Painter(
                       drwArcs: [
@@ -76,32 +81,31 @@ class SpendingBudgetsView extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
-                    ),
+                    )
                   ],
-                )
+                ),
               ],
             ),
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               child: InkWell(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(15),
                 onTap: () {},
                 child: Container(
-                  height: 64,
+                  height: 65,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: border.withOpacity(0.1),
                     ),
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   alignment: Alignment.center,
                   child: const Text(
                     "Your budgets are on track 👍",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -109,10 +113,10 @@ class SpendingBudgetsView extends StatelessWidget {
               ),
             ),
             ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: budgets.length,
+              physics: const NeverScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               itemBuilder: (context, index) {
                 return BudgetItems(
                   budget: budgets[index],
@@ -120,34 +124,35 @@ class SpendingBudgetsView extends StatelessWidget {
               },
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: InkWell(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(15),
                 onTap: () {},
                 child: DottedBorder(
-                  dashPattern: const [5, 4],
+                  dashPattern: [5,5],
                   strokeWidth: 1,
                   borderType: BorderType.RRect,
-                  radius: const Radius.circular(16),
-                  color: border.withOpacity(0.1),
+                  radius: const Radius.circular(15),
+                  color: border.withOpacity(0.2),
                   child: Container(
-                    height: 64,
+                    height: 65,
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     alignment: Alignment.center,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Add new category ",
+                          "Add new category",
                           style: TextStyle(
                             color: gray30,
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
+                        const SizedBox(width: 10),
                         Image.asset(
                           "assets/img/add.png",
                           width: 12,

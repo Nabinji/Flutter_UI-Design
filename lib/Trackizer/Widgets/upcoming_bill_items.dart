@@ -1,41 +1,35 @@
 import 'package:flutter/material.dart';
-import '../Utils/color.dart';
+import 'package:flutter_ui_design/Trackizer/Utils/color.dart';
 
-class UpcomingBill extends StatelessWidget {
-  final Map sObj;
-  final VoidCallback onPressed;
-
-  const UpcomingBill({
-    super.key,
-    required this.sObj,
-    required this.onPressed,
-  });
+class UpcomingBillItems extends StatelessWidget {
+  final Map subItems;
+  const UpcomingBillItems({super.key, required this.subItems});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onPressed,
+        borderRadius: BorderRadius.circular(15),
+        onTap: () {},
         child: Container(
           height: 70,
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             border: Border.all(
-              color:border.withOpacity(0.15),
+              color: border.withOpacity(0.15),
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(15),
           ),
           alignment: Alignment.center,
           child: Row(
             children: [
               Container(
                 height: 50,
-                width: 45,
+                width: 50,
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
-                  color:gray70.withOpacity(0.5),
+                  color: gray70.withOpacity(0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 alignment: Alignment.center,
@@ -44,42 +38,38 @@ class UpcomingBill extends StatelessWidget {
                     Text(
                       "Jun",
                       style: TextStyle(
-                        color:gray30,
                         fontSize: 10,
+                        color: gray30,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                     Text(
                       "25",
                       style: TextStyle(
-                        color:gray30,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
+                        color: gray30,
+                        fontWeight: FontWeight.w600,
                       ),
                     )
                   ],
                 ),
               ),
-              const SizedBox(
-                width: 8,
-              ),
+              const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  sObj["name"],
+                  subItems['name'],
                   style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
-              const SizedBox(
-                width: 8,
-              ),
+              const SizedBox(width: 10),
               Text(
-                "\$${sObj["price"]}",
+                "\$${subItems['price']}",
                 style: const TextStyle(
-                  color: Colors.white,
                   fontSize: 16,
+                  color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
               )

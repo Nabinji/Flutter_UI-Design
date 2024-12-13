@@ -3,13 +3,17 @@ import 'package:vector_math/vector_math.dart';
 import '../Utils/color.dart';
 
 class CustomArcPainter extends CustomPainter {
-
   final double start;
   final double end;
   final double width;
   final double blurWidth;
 
-  CustomArcPainter({this.start = 0, this.end = 270, this.width = 15, this.blurWidth = 6});
+  CustomArcPainter({
+    this.start = 0,
+    this.end = 270,
+    this.width = 15,
+    this.blurWidth = 6,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -18,7 +22,7 @@ class CustomArcPainter extends CustomPainter {
         radius: size.width / 2);
 
     var gradientColor = LinearGradient(
-        colors: [secondary,  secondary],
+        colors: [secondary, secondary],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter);
 
@@ -35,20 +39,21 @@ class CustomArcPainter extends CustomPainter {
     backgroundPaint.strokeCap = StrokeCap.round;
 
     Paint shadowPaint = Paint()
-        ..color = secondary.withOpacity(0.3)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = width + blurWidth
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
+      ..color = secondary.withOpacity(0.3)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = width + blurWidth
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
 
     var startVal = 135.0 + start;
 
-    canvas.drawArc(rect, radians(startVal) , radians(270), false, backgroundPaint);
-    
+    canvas.drawArc(
+        rect, radians(startVal), radians(270), false, backgroundPaint);
+
     //Draw Shadow Arc
     Path path = Path();
-    path.addArc(rect, radians(startVal) , radians(end));
-    canvas.drawPath(path, shadowPaint );
-    
+    path.addArc(rect, radians(startVal), radians(end));
+    canvas.drawPath(path, shadowPaint);
+
     canvas.drawArc(rect, radians(startVal), radians(end), false, activePaint);
   }
 
@@ -58,3 +63,5 @@ class CustomArcPainter extends CustomPainter {
   @override
   bool shouldRebuildSemantics(CustomArcPainter oldDelegate) => false;
 }
+// to learn customPainter watch the tutorial on youtube 
+// the it will be easy for you.

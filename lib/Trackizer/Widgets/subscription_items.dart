@@ -1,24 +1,17 @@
 import 'package:flutter/material.dart';
-
-import '../Utils/color.dart';
+import 'package:flutter_ui_design/Trackizer/Utils/color.dart';
 
 class SubscriptionItems extends StatelessWidget {
-  final Map sObj;
-  final VoidCallback onPressed;
-
-  const SubscriptionItems({
-    super.key,
-    required this.sObj,
-    required this.onPressed,
-  });
+  final Map subItems;
+  const SubscriptionItems({super.key, required this.subItems});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: onPressed,
+        borderRadius: BorderRadius.circular(15),
+        onTap: () {},
         child: Container(
           height: 70,
           padding: const EdgeInsets.all(10),
@@ -26,38 +19,37 @@ class SubscriptionItems extends StatelessWidget {
             border: Border.all(
               color: border.withOpacity(0.15),
             ),
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(15),
           ),
           alignment: Alignment.center,
           child: Row(
             children: [
               Image.asset(
-                sObj["icon"],
-                width: 40,
+                subItems['icon'],
                 height: 40,
+                width: 40,
               ),
-              const SizedBox(width: 8),
+              const SizedBox(width: 10),
               Expanded(
                 child: Text(
-                  sObj["name"],
+                  subItems['name'],
                   style: const TextStyle(
-                    color: Colors.white,
                     fontSize: 16,
+                    color: Colors.white,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
-              const SizedBox(
-                width: 8,
-              ),
+              const SizedBox(width: 10),
               Text(
-                "\$${sObj["price"]}",
+                "\$${subItems['price']}",
                 style: const TextStyle(
-                  color: Colors.white,
                   fontSize: 16,
+                  color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
               )
+
             ],
           ),
         ),

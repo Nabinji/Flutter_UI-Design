@@ -1,12 +1,12 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import '../Model/card_view_model.dart';
-import '../Model/subscription_model.dart';
-import '../Utils/color.dart';
+import 'package:card_swiper/card_swiper.dart';
+import 'package:flutter_ui_design/Trackizer/Model/card_view_model.dart';
+import 'package:flutter_ui_design/Trackizer/Model/subscription_model.dart';
+import 'package:flutter_ui_design/Trackizer/Utils/color.dart';
 
-class CardsView extends StatelessWidget {
-  const CardsView({super.key});
+class CardView extends StatelessWidget {
+  const CardView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CardsView extends StatelessWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 30, right: 10),
+              padding: const EdgeInsets.only(top: 35, right: 15),
               child: Row(
                 children: [
                   const Spacer(),
@@ -32,24 +32,26 @@ class CardsView extends StatelessWidget {
               ),
             ),
             const Text(
-              "Spending & Budgets",
+              "Credit Cards",
               style: TextStyle(
-                color: Colors.white54,
+                color: Colors.white30,
+                fontWeight: FontWeight.w600,
                 fontSize: 18,
               ),
             ),
             SizedBox(
               height: 400,
+              // add the card swiper package
               child: Swiper(
                 itemCount: virtualCards.length,
-                layout: SwiperLayout.TINDER,
-                itemWidth: 250.0,
+                layout: SwiperLayout.STACK,
+                itemWidth: 250,
                 itemHeight: 350,
-                scale: 1,
-                viewportFraction: 1,
+                viewportFraction: 0.6,
+                scale: 0.6,
                 itemBuilder: (context, index) {
                   final card = virtualCards[index];
-                  return _CardWidget(card: card);
+                  return CardWidgets(card: card);
                 },
               ),
             ),
@@ -63,63 +65,75 @@ class CardsView extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: subscriptions
-                      .map((sub) => Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Image.asset(sub.icon, width: 40, height: 40),
-                          ))
+                      .map(
+                        (sub) => Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Image.asset(
+                            sub.icon,
+                            width: 40,
+                            height: 40,
+                          ),
+                        ),
+                      )
                       .toList(),
                 ),
               ],
             ),
             Container(
-              height: 300,
-              margin: const EdgeInsets.only(top: 40),
+              height: 250,
+              margin: const EdgeInsets.only(top: 30),
               decoration: BoxDecoration(
                 color: gray70.withOpacity(0.5),
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  topRight: Radius.circular(25),
+                borderRadius: const BorderRadius.vertical(
+                 top: Radius.circular(25),
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
+              child:  Padding(
+              padding: const EdgeInsets.all(15),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(15),
+                onTap: () {},
                 child: DottedBorder(
-                  dashPattern: const [5, 4],
+                  dashPattern: [5,5],
                   strokeWidth: 1,
                   borderType: BorderType.RRect,
-                  radius: const Radius.circular(16),
-                  color: border.withOpacity(0.1),
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(16),
-                    onTap: () {},
-                    child: SizedBox(
-                      height: 50,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Add new card",
-                            style: TextStyle(
-                                color: gray30,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(width: 8),
-                          Image.asset(
-                            "assets/img/add.png",
-                            width: 12,
-                            height: 12,
+                  radius: const Radius.circular(15),
+                  color: border.withOpacity(0.2),
+                  child: Container(
+                    height: 65,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    alignment: Alignment.center,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Add new card",
+                          style: TextStyle(
                             color: gray30,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(width: 10),
+                        Image.asset(
+                          "assets/img/add.png",
+                          width: 12,
+                          height: 12,
+                          color: gray30,
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
+            ),
             ),
           ],
         ),
@@ -128,10 +142,9 @@ class CardsView extends StatelessWidget {
   }
 }
 
-class _CardWidget extends StatelessWidget {
+class CardWidgets extends StatelessWidget {
   final VirtualCardModel card;
-
-  const _CardWidget({required this.card});
+  const CardWidgets({super.key, required this.card});
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +164,7 @@ class _CardWidget extends StatelessWidget {
                 "assets/img/mastercard_logo.png",
                 width: 50,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               const Text(
                 "Virtual Card",
                 style: TextStyle(
@@ -164,11 +177,10 @@ class _CardWidget extends StatelessWidget {
               Text(
                 card.name,
                 style: TextStyle(
-                  color: Colors.grey[20],
-                  fontSize: 12,
+                  color: Colors.grey[200],
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Text(
                 card.number,
                 style: const TextStyle(
@@ -176,12 +188,11 @@ class _CardWidget extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 10),
               Text(
                 card.monthYear,
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 14,
                 ),
               ),
             ],
