@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'Trackizer/View/app_main_screen.dart';
+import 'package:flutter_ui_design/Speedometer/speedometer.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -13,10 +12,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AppMainScreen(),
+      home: SpeedometerPage(),
     );
   }
 }
+
+
 
 
 

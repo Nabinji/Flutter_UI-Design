@@ -62,6 +62,7 @@ dependencies:
   flutter_spinkit: ^5.2.1
   dotted_border: ^2.1.0
   card_swiper: ^3.0.1
+  syncfusion_flutter_gauges: ^27.2.5
 
 dev_dependencies:
   flutter_test:
