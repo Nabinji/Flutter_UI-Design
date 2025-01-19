@@ -69,7 +69,7 @@ class _SpeedometerPageState extends State<SpeedometerPage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
-          "SPPDOMETER",
+          "SPEEDOMETER",
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
@@ -256,7 +256,7 @@ class _SpeedometerPageState extends State<SpeedometerPage> {
                 ElevatedButton(
                     onPressed: applyBreak,
                     child: const Text(
-                      "Breake",
+                      "Brake",
                       style: TextStyle(
                         color: Colors.black,
                       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Speedometer/speedometer.dart';
+import 'package:flutter_ui_design/Health%20Mobile%20App/pages/health_app_main_page.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SpeedometerPage(),
+      home: HealthAppMainPage(),
     );
   }
 }

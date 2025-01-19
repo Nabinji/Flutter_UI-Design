@@ -63,6 +63,7 @@ dependencies:
   dotted_border: ^2.1.0
   card_swiper: ^3.0.1
   syncfusion_flutter_gauges: ^27.2.5
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -110,6 +111,7 @@ flutter:
     - assets/fashion/category_image/
     - assets/fashion/category_image/sub_category/
     - assets/img/
+    - assets/health/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
