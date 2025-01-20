@@ -3,9 +3,7 @@ import 'package:flutter_ui_design/Health%20Mobile%20App/utils/color.dart';
 import 'package:iconsax/iconsax.dart';
 
 class DoctorProfile extends StatelessWidget {
-  const DoctorProfile({
-    super.key,
-  });
+  const DoctorProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +25,12 @@ class DoctorProfile extends StatelessWidget {
               Row(
                 children: [
                   Container(
-                    width: 50,
                     height: 50,
+                    width: 50,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15),
+                      borderRadius: BorderRadius.circular(
+                        15,
+                      ),
                       image: const DecorationImage(
                         fit: BoxFit.cover,
                         image: NetworkImage(
@@ -46,19 +46,20 @@ class DoctorProfile extends StatelessWidget {
                         "dr. Ruben Dorwart",
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w600,color: Colors.white
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
                         ),
                       ),
                       Text(
                         "Dental Specialist",
                         style: TextStyle(
-                          color: Colors.white70,
-                          fontWeight: FontWeight.w600,
                           fontSize: 15,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white70,
                         ),
                       ),
                     ],
-                  ),
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -84,7 +85,7 @@ class DoctorProfile extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: 10),
-                    Icon(
+                     Icon(
                       Iconsax.clock,
                       color: Colors.white,
                     ),
@@ -94,7 +95,7 @@ class DoctorProfile extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: Colors.white,
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

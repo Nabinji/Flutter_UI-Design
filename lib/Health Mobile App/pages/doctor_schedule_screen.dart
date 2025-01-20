@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_design/Health%20Mobile%20App/models/schedule_model.dart';
 import 'package:flutter_ui_design/Health%20Mobile%20App/utils/color.dart';
 import 'package:iconsax/iconsax.dart';
-import '../models/schedule_model.dart';
 
 class DoctorScheduleScreen extends StatefulWidget {
   const DoctorScheduleScreen({super.key});
@@ -11,8 +11,7 @@ class DoctorScheduleScreen extends StatefulWidget {
 }
 
 class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
-  String selectedOption = "Upcoming"; // Variable to track the selected option
-
+  String selectedOption = "Upcoming";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Row
+              // top row
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -32,7 +31,9 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                     height: 50,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: Colors.black12),
+                      border: Border.all(
+                        color: Colors.black12,
+                      ),
                       color: Colors.white,
                     ),
                     child: const Icon(
@@ -48,32 +49,31 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(width: 50), // Placeholder for alignment
+                  const SizedBox(width: 25),
                 ],
               ),
               const SizedBox(height: 20),
-              // Options Row
+              // options row
               Container(
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  border: Border.all(color: Colors.black12),
-                ),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(color: Colors.black12)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildOption("Upcoming"),
-                    _buildOption("Complete"),
-                    _buildOption("Result"),
+                    buildOption("Upcoming"),
+                    buildOption("Complete"),
+                    buildOption("Result"),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
-              // Dynamic Content
+              // dynamic content
               Expanded(
-                child: _buildContent(),
-              ),
+                child: buildContent(),
+              )
             ],
           ),
         ),
@@ -81,7 +81,7 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
     );
   }
 
-  Widget _buildOption(String option) {
+  Widget buildOption(String option) {
     return Container(
       padding: const EdgeInsets.only(top: 13, bottom: 13, right: 25, left: 36),
       decoration: BoxDecoration(
@@ -91,7 +91,7 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
       child: GestureDetector(
         onTap: () {
           setState(() {
-            selectedOption = option; // Update the selected option
+            selectedOption = option;
           });
         },
         child: Text(
@@ -106,24 +106,24 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
     );
   }
 
-  Widget _buildContent() {
+  Widget buildContent() {
     if (selectedOption == "Upcoming") {
-      return _buildTodayContent();
+      return buildUpcoming();
     } else if (selectedOption == "Complete") {
-      return _buildTomorrowContent();
+      return buildComplete();
     } else if (selectedOption == "Result") {
-      return _buildUpcomingContent();
+      return buildResult();
     }
     return const SizedBox.shrink();
   }
 
-  // Content for "Today"
-  Widget _buildTodayContent() {
+  // content for upcoming
+  Widget buildUpcoming() {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: scheduleDoctors.length,
       itemBuilder: (context, index) {
-        final doctorInf = scheduleDoctors[index];
+        final doctor = scheduleDoctors[index];
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Container(
@@ -142,13 +142,15 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                   Row(
                     children: [
                       Container(
-                        width: 50,
                         height: 50,
+                        width: 50,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
+                          borderRadius: BorderRadius.circular(
+                            15,
+                          ),
                           image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage(doctorInf.profile),
+                            image: NetworkImage(doctor.profile),
                           ),
                         ),
                       ),
@@ -157,30 +159,31 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            doctorInf.name,
+                            doctor.name,
                             style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Text(
-                            doctorInf.position,
+                            doctor.position,
                             style: const TextStyle(
-                              color: Colors.black45,
-                            ),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black45),
                           ),
                         ],
-                      ),
+                      )
                     ],
                   ),
                   const SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
                       color: cardBgColor,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(15),
                     ),
                     height: 35,
-                    width: 280,
+                    width: 290,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -189,7 +192,7 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                           color: Colors.black54,
                         ),
                         Text(
-                          doctorInf.date,
+                          doctor.date,
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black45,
@@ -198,10 +201,10 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                         const SizedBox(width: 10),
                         const Icon(
                           Iconsax.clock,
-                          color: Colors.black38,
+                          color: Colors.black54,
                         ),
                         Text(
-                          doctorInf.time,
+                          doctor.time,
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: Colors.black45,
@@ -212,39 +215,42 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
                   ),
                   const SizedBox(height: 20),
                   Row(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: kPrimaryColor),
-                            borderRadius: BorderRadius.circular(15)),
+                          border: Border.all(color: kPrimaryColor),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         child: const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                           child: Text(
-                            'Cancel',
+                            "Cancel",
                             style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
-                                color: kPrimaryColor),
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: kPrimaryColor,
+                            ),
                           ),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Container(
                         decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.circular(15)),
+                          color: kPrimaryColor,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
                         child: const Padding(
                           padding:
                               EdgeInsets.symmetric(horizontal: 25, vertical: 5),
                           child: Text(
-                            'Reschedule',
+                            "Reschedule",
                             style: TextStyle(
-                                fontSize: 17,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white70),
+                              fontSize: 17,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white54,
+                            ),
                           ),
                         ),
                       ),
@@ -259,11 +265,11 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
     );
   }
 
-  // Content for "Tomorrow"
-  Widget _buildTomorrowContent() {
+  // content for complete
+  Widget buildComplete() {
     return const Center(
       child: Text(
-        "No appointments scheduled for tomorrow.",
+        "No appointments Complete ",
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
@@ -271,13 +277,12 @@ class _DoctorScheduleScreenState extends State<DoctorScheduleScreen> {
         ),
       ),
     );
-  }
+  } // content for result
 
-  // Content for "Upcoming"
-  Widget _buildUpcomingContent() {
+  Widget buildResult() {
     return const Center(
       child: Text(
-        "Upcoming Appointments:Coming Soon",
+        "No appointments Result ",
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,

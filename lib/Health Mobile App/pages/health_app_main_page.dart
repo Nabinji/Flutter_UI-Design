@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Health%20Mobile%20App/pages/doctor_schude_screen.dart';
-import 'package:flutter_ui_design/Health%20Mobile%20App/pages/health_app_home_page.dart';
+import 'package:flutter_ui_design/Health%20Mobile%20App/pages/doctor_schedule_screen.dart';
+import 'package:flutter_ui_design/Health%20Mobile%20App/pages/healthapp_home_page.dart';
 import 'package:flutter_ui_design/Health%20Mobile%20App/utils/color.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -14,7 +14,7 @@ class HealthAppMainPage extends StatefulWidget {
 class _HealthAppMainPageState extends State<HealthAppMainPage> {
   int selectedIndex = 0;
   final List pages = [
-    const HealthAppHomePage(),
+    const HealthappHomePage(),
     const DoctorScheduleScreen(),
     const Scaffold(),
     const Scaffold(),
@@ -27,7 +27,7 @@ class _HealthAppMainPageState extends State<HealthAppMainPage> {
         elevation: 0,
         backgroundColor: Colors.white,
         unselectedItemColor: Colors.black26,
-        selectedItemColor:kPrimaryColor,
+        selectedItemColor: kPrimaryColor,
         iconSize: 30,
         type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex,
@@ -38,19 +38,27 @@ class _HealthAppMainPageState extends State<HealthAppMainPage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.home5),
+            icon: Icon(
+              Iconsax.home5,
+            ),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.calendar_1),
+            icon: Icon(
+              Iconsax.calendar_1,
+            ),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Iconsax.message),
+            icon: Icon(
+              Iconsax.message,
+            ),
             label: "",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
+            icon: Icon(
+              Icons.person_outline,
+            ),
             label: "",
           ),
         ],
