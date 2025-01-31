@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Educational%20App%20UI/models/category.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Models/category.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Models/course.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Screens/course_detail_screen.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Utils/color.dart';
 import 'package:flutter_ui_design/Educational%20App%20UI/widgets/custom_icon_button.dart';
-import '../../Health Mobile App/utils/color.dart';
-import '../models/course.dart';
-import 'course_details_screen.dart';
 
 class CourseScreen extends StatefulWidget {
   final Category category;
   const CourseScreen({super.key, required this.category});
 
   @override
-  _CourseScreenState createState() => _CourseScreenState();
+  State<CourseScreen> createState() => _CourseScreenState();
 }
 
 class _CourseScreenState extends State<CourseScreen> {
   late List<Course> filteredCourses;
-
   @override
   void initState() {
-    super.initState();
     filteredCourses = courses
-        .where((course) => course.categoryName == widget.category.name)
+        .where((myCourse) => myCourse.categoryName == widget.category.name)
         .toList();
+    super.initState();
   }
 
   @override
@@ -31,21 +30,21 @@ class _CourseScreenState extends State<CourseScreen> {
       body: SafeArea(
         bottom: false,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
                   CustomIconButton(
-                    height: 35,
-                    width: 35,
+                    height: 40,
+                    width: 40,
                     onTap: () => Navigator.pop(context),
                     child: const Icon(Icons.arrow_back),
                   ),
                   const Spacer(),
                   const Text(
-                    'Development',
+                    "Development",
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.black,
@@ -63,16 +62,18 @@ class _CourseScreenState extends State<CourseScreen> {
                   separatorBuilder: (_, __) {
                     return const SizedBox(height: 10);
                   },
-                  shrinkWrap: true,
-                  itemBuilder: (_, int index) {
+                  itemBuilder: (context, index) {
                     final course = filteredCourses[index];
                     return GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>  DetailsScreen(course: course,),
-                        ),
-                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                CourseDetailScreen(course: course),
+                          ),
+                        );
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -93,33 +94,31 @@ class _CourseScreenState extends State<CourseScreen> {
                             ),
                             const SizedBox(width: 20),
                             Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    course.name,
-                                    style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  course.name,
+                                  style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
                                   ),
-                                  Text(
-                                    "Author ${course.author}",
-                                    style: const TextStyle(
-                                      fontSize: 13,
-                                      color: Colors.black54,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                ),
+                                Text(
+                                  "Author ${course.author}",
+                                  style: const TextStyle(
+                                    fontSize: 13,
+                                    color: Colors.black54,
+                                    fontWeight: FontWeight.w600,
                                   ),
-                                  const SizedBox(height: 5),
-                                  LinearProgressIndicator(
+                                ),
+                                const SizedBox(height: 5),
+                                LinearProgressIndicator(
                                     value: course.completedPercentage,
                                     backgroundColor: Colors.black12,
-                                    color: kPrimaryColor,
-                                  ),
-                                ],
-                              ),
-                            ),
+                                    color: primaryColor1)
+                              ],
+                            ))
                           ],
                         ),
                       ),

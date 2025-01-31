@@ -6,7 +6,6 @@ class CustomIconButton extends StatelessWidget {
   final double width;
   final Color? color;
   final VoidCallback onTap;
-
   const CustomIconButton({
     super.key,
     required this.child,
@@ -26,16 +25,18 @@ class CustomIconButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(.1),
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 2.0,
-            spreadRadius: .05,
+            spreadRadius: 0.5,
           ),
         ],
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: onTap,
-        child: Center(child: child),
+        child: Center(
+          child: child,
+        ),
       ),
     );
   }

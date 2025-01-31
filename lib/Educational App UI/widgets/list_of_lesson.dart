@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Educational%20App%20UI/constants/color.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Utils/color.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/models/lesson.dart';
 import 'package:iconsax/iconsax.dart';
-import '../models/lesson.dart';
 
-class LessonCard extends StatelessWidget {
+class ListOfLesson extends StatelessWidget {
   final Lesson lesson;
-  const LessonCard({super.key, required this.lesson});
+  const ListOfLesson({super.key, required this.lesson});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class LessonCard extends StatelessWidget {
                 size: 40,
               )
             : Icon(
-                Icons.play_circle_outlined,
+                Icons.play_circle_outline,
                 color: primaryColor1.withOpacity(0.7),
                 size: 40,
               ),
@@ -29,9 +29,9 @@ class LessonCard extends StatelessWidget {
             children: [
               Text(
                 lesson.name,
-                style:  TextStyle(
+                style: TextStyle(
                   fontSize: 16,
-                  color: lesson.isCompleted?Colors.black:Colors.black54,
+                  color: lesson.isCompleted ? Colors.black : Colors.black54,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -46,13 +46,13 @@ class LessonCard extends StatelessWidget {
             ],
           ),
         ),
-        lesson.isCompleted
+           lesson.isCompleted
             ? const Icon(
                 Iconsax.tick_circle,
                 color: Colors.green,
                 size: 30,
               )
-            :  Icon(
+            : Icon(
                 Iconsax.lock_circle,
                 color: Colors.amber[400],
                 size: 30,

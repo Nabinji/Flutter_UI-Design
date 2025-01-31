@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Educational%20App%20UI/screens/education_app_main_screen.dart';
-import 'package:flutter_ui_design/Health%20Mobile%20App/pages/health_app_main_page.dart';
+import 'package:flutter_ui_design/Educational%20App%20UI/Screens/education_app_main_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BaseScreen(),
+      home: EducationAppMainScreen(),
     );
   }
 }
