@@ -3,7 +3,7 @@ import 'package:flutter_ui_design/Educational%20App%20UI/constants/color.dart';
 import 'package:flutter_ui_design/Educational%20App%20UI/models/course.dart';
 import 'package:flutter_ui_design/Educational%20App%20UI/widgets/custom_icon_button.dart';
 import '../models/lesson.dart';
-import '../widgets/custom_video_player.dart';
+import '../widgets/my_video_player.dart';
 import '../widgets/lesson_card.dart';
 
 class DetailsScreen extends StatefulWidget {
@@ -50,7 +50,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ],
               ),
               const SizedBox(height: 25),
-              const CustomVideoPlayer(),
+              const MyVideoPlayer(),
               const SizedBox(height: 15),
                Text(
                 widget.course.name,

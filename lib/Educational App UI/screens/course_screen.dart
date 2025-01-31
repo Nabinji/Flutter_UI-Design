@@ -3,7 +3,7 @@ import 'package:flutter_ui_design/Educational%20App%20UI/models/category.dart';
 import 'package:flutter_ui_design/Educational%20App%20UI/widgets/custom_icon_button.dart';
 import '../../Health Mobile App/utils/color.dart';
 import '../models/course.dart';
-import 'details_screen.dart';
+import 'course_details_screen.dart';
 
 class CourseScreen extends StatefulWidget {
   final Category category;

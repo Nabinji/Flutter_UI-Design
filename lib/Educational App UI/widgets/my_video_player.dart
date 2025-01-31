@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class CustomVideoPlayer extends StatefulWidget {
-  const CustomVideoPlayer({super.key});
+class MyVideoPlayer extends StatefulWidget {
+  const MyVideoPlayer({super.key});
 
   @override
-  State<CustomVideoPlayer> createState() => _CustomVideoPlayerState();
+  State<MyVideoPlayer> createState() => _MyVideoPlayerState();
 }
 
-class _CustomVideoPlayerState extends State<CustomVideoPlayer> {
+class _MyVideoPlayerState extends State<MyVideoPlayer> {
   late final VideoPlayerController _controller;
 
   @override
