@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Agriplant/Utils/colors.dart';
 import 'package:flutter_ui_design/Agriplant/models/product.dart';
-import '../pages/product_details_page.dart';
+import 'package:flutter_ui_design/Agriplant/pages/product_details_page.dart';
 
-class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product});
-
+class ProductItems extends StatelessWidget {
   final AgroProduct product;
+  const ProductItems({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
+        Navigator.push(
+          context,
           MaterialPageRoute(
-            builder: (_) => ProductDetailsPage(product: product),
+            builder: (context) => ProductDetailsPage(
+              product: product,
+            ),
           ),
         );
       },
@@ -22,43 +24,47 @@ class ProductCard extends StatelessWidget {
         color: Colors.white,
         clipBehavior: Clip.antiAlias,
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
           side: BorderSide(color: Colors.black12),
         ),
         elevation: 0.1,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 140,
-              alignment: Alignment.topRight,
-              width: double.infinity,
-              padding: const EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(product.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: SizedBox(
-                width: 30,
-                height: 30,
-                child: IconButton(
-                  style: IconButton.styleFrom(
-                    backgroundColor: Colors.white,
+            Hero(
+              tag: product.image,
+              child: Container(
+                height: 140,
+                alignment: Alignment.topRight,
+                width: double.infinity,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      product.image,
+                    ),
                   ),
-                  padding: EdgeInsets.zero,
-                  onPressed: () {},
-                  iconSize: 18,
-                  icon: const Icon(
-                    Icons.bookmark_border,
-                    color: Colors.black,
+                ),
+                child: SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: IconButton(
+                    style: IconButton.styleFrom(
+                      backgroundColor: Colors.white,
+                    ),
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.bookmark_border,
+                    ),
                   ),
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -79,21 +85,24 @@ class ProductCard extends StatelessWidget {
                             TextSpan(
                               text: "\$${product.price}/",
                               style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black,
-                                  fontSize: 18),
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
                             ),
                             TextSpan(
                               text: product.unit,
                               style: const TextStyle(
-                                  fontSize: 13, color: Colors.black45),
+                                color: Colors.black45,
+                                fontSize: 13,
+                              ),
                             ),
                           ],
                         ),
                       ),
                       SizedBox(
-                        width: 35,
                         height: 35,
+                        width: 35,
                         child: IconButton(
                           style: IconButton.styleFrom(
                             backgroundColor: mainGreenColor,
@@ -103,18 +112,19 @@ class ProductCard extends StatelessWidget {
                           ),
                           padding: const EdgeInsets.all(5),
                           onPressed: () {},
-                          iconSize: 18,
-                          icon: const Icon(
-                            Icons.add,
-                            color: Colors.white,
+                          icon: const Center(
+                            child: Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

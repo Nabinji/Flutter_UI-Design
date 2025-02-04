@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_ui_design/Agriplant/Utils/colors.dart';
-import 'package:flutter_ui_design/Agriplant/pages/explore_page.dart';
-import 'package:flutter_ui_design/Agriplant/pages/services_page.dart';
+import 'package:flutter_ui_design/Agriplant/pages/agriplant_home_screen.dart';
+import 'package:flutter_ui_design/Agriplant/pages/services_screen.dart';
 
 class AgriPlantMainScreen extends StatefulWidget {
   const AgriPlantMainScreen({super.key});
@@ -13,8 +13,8 @@ class AgriPlantMainScreen extends StatefulWidget {
 
 class _AgriPlantMainScreenState extends State<AgriPlantMainScreen> {
   final pages = [
-    const ExplorePage(),
-    const ServicesPage(),
+    const AgriplantHomeScreen(),
+    const ServicesScreen(),
     const Scaffold(
       body: Center(
         child: Text("Cart Page"),
@@ -27,16 +27,15 @@ class _AgriPlantMainScreenState extends State<AgriPlantMainScreen> {
     ),
   ];
   int currentPageIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: pages[currentPageIndex],
+      backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        currentIndex: currentPageIndex,
         selectedItemColor: mainGreenColor,
+        currentIndex: currentPageIndex,
         onTap: (index) {
           setState(() {
             currentPageIndex = index;
@@ -62,7 +61,7 @@ class _AgriPlantMainScreenState extends State<AgriPlantMainScreen> {
             icon: Icon(Icons.person_outline),
             label: "Profile",
             activeIcon: Icon(Icons.person),
-          ),
+          )
         ],
       ),
     );

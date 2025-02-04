@@ -2,37 +2,35 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_ui_design/Agriplant/Utils/colors.dart';
-import '../models/product.dart';
+import 'package:flutter_ui_design/Agriplant/models/product.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key, required this.product});
-
   final AgroProduct product;
+  const ProductDetailsPage({super.key, required this.product});
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
 class _ProductDetailsPageState extends State<ProductDetailsPage> {
-  late TapGestureRecognizer readMoreGestureRecognizer;
-  bool showMore = false;
+  late TapGestureRecognizer gestureRecognizer;
   int count = 1;
-
+  bool showMore = false;
   @override
   void initState() {
-    super.initState();
-    readMoreGestureRecognizer = TapGestureRecognizer()
+    gestureRecognizer = TapGestureRecognizer()
       ..onTap = () {
         setState(() {
           showMore = !showMore;
         });
       };
+    super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
-    readMoreGestureRecognizer.dispose();
+    gestureRecognizer.dispose();
   }
 
   @override
@@ -52,22 +50,28 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: const Icon(IconlyLight.bookmark),
+            icon: IconButton(
+              onPressed: () {},
+              icon: const Icon(IconlyLight.bookmark),
+            ),
           ),
         ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(18),
         children: [
-          Container(
-            height: 270,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(widget.product.image),
-                fit: BoxFit.cover,
+          Hero(
+            tag: widget.product.image,
+            child: Container(
+              height: 270,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(widget.product.image),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(10),
               ),
-              borderRadius: BorderRadius.circular(10),
             ),
           ),
           const SizedBox(height: 15),
@@ -83,7 +87,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text(
-                "Available in stock",
+                "Available in stork",
                 style: TextStyle(
                   color: mainGreenColor,
                   fontSize: 16,
@@ -95,15 +99,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     TextSpan(
                       text: "\$${widget.product.price}/",
                       style: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                          fontSize: 20),
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
                     ),
                     TextSpan(
                       text: widget.product.unit,
                       style: const TextStyle(
-                        fontSize: 13,
                         color: Colors.black45,
+                        fontSize: 13,
                       ),
                     ),
                   ],
@@ -131,10 +136,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 height: 30,
                 width: 30,
                 child: IconButton(
+                  iconSize: 18,
+                  padding: EdgeInsets.zero,
                   style: IconButton.styleFrom(
                     backgroundColor: mainGreenColor,
                   ),
-                  padding: EdgeInsets.zero,
                   onPressed: () {
                     setState(() {
                       if (count > 1) {
@@ -142,7 +148,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       }
                     });
                   },
-                  iconSize: 18,
                   icon: const Icon(
                     Icons.remove,
                     color: Colors.white,
@@ -163,16 +168,16 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 height: 30,
                 width: 30,
                 child: IconButton(
+                  iconSize: 18,
+                  padding: EdgeInsets.zero,
                   style: IconButton.styleFrom(
                     backgroundColor: mainGreenColor,
                   ),
-                  padding: EdgeInsets.zero,
                   onPressed: () {
                     setState(() {
                       count++;
                     });
                   },
-                  iconSize: 18,
                   icon: const Icon(
                     Icons.add,
                     color: Colors.white,
@@ -199,17 +204,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               ),
               children: [
                 TextSpan(
-                  text: showMore
-                      ? widget.product.description
-                      : '${widget.product.description.substring(0, widget.product.description.length - 100)}...',
-                ),
+                    text: showMore
+                        ? widget.product.description
+                        : '${widget.product.description.substring(0, widget.product.description.length - 150)}...'),
                 TextSpan(
-                  recognizer: readMoreGestureRecognizer,
-                  text: showMore ? " Read less" : " Read more",
-                  style: const TextStyle(
-                    color: mainGreenColor,
-                  ),
-                )
+                  recognizer: gestureRecognizer,
+                  text: showMore ? "Read less" : " Read more",
+                  style: const TextStyle(color: mainGreenColor),
+                ),
               ],
             ),
           ),
@@ -233,10 +235,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   width: 80,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage(agroProducts[index].image),
                       fit: BoxFit.cover,
+                      image: NetworkImage(
+                        agroProducts[index].image,
+                      ),
                     ),
-                    borderRadius: BorderRadius.circular(8),
+                    borderRadius: BorderRadius.circular(10)
                   ),
                 );
               },
@@ -248,19 +252,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           ),
           const SizedBox(height: 20),
           FilledButton(
-    
             style: FilledButton.styleFrom(
               padding: const EdgeInsets.all(15),
-                backgroundColor: mainGreenColor,
-                shape: ContinuousRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                )),
+              backgroundColor: mainGreenColor,
+              shape: ContinuousRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
             onPressed: () {},
             child: const Text(
-              "Add to cart",
+              "Add to Cart",
               style: TextStyle(fontSize: 16),
             ),
-          )
+          ),
         ],
       ),
     );
