@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Job%20Finder%20App%20UI/Model/job_opportunity_model.dart';
-import 'package:flutter_ui_design/Job%20Finder%20App%20UI/screens/job_details_page.dart';
+import 'package:flutter_ui_design/Job%20Finder%20App%20UI/Screen/job_details_pages.dart';
 
 class JobItems extends StatelessWidget {
   final JobOpportunity job;
@@ -13,7 +13,9 @@ class JobItems extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => JobDetailsPage(job: job),
+            builder: (context) => JobDetailsPages(
+              job: job,
+            ),
           ),
         );
       },
@@ -21,8 +23,9 @@ class JobItems extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 7, top: 7),
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            color: Colors.grey.shade200),
+          borderRadius: BorderRadius.circular(10),
+          color: Colors.grey.shade200,
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,7 +63,7 @@ class JobItems extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                )
               ],
             ),
             Container(

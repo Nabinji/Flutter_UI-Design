@@ -18,7 +18,7 @@ class MySearchBar extends StatelessWidget {
               height: 55,
               padding: const EdgeInsets.only(left: 15),
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                borderRadius: BorderRadius.circular(12),
                 color: Colors.grey.shade300,
               ),
               child: Row(
@@ -36,7 +36,7 @@ class MySearchBar extends StatelessWidget {
                     flex: 6,
                     child: Container(
                       margin: const EdgeInsets.only(left: 5, right: 10),
-                      child: const Text('Search for items here'),
+                      child: const Text("Search for items here"),
                     ),
                   ),
                 ],
@@ -49,14 +49,15 @@ class MySearchBar extends StatelessWidget {
               margin: const EdgeInsets.only(left: 10),
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(12)),
-                color: Colors.black,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(12),
+
+                ),
+                color: Colors.black
               ),
-              child: SvgPicture.asset(
-                "assets/job-finder/ic_filter.svg",
-              ),
+              child: SvgPicture.asset("assets/job-finder/ic_filter.svg"),
             ),
-          )
+          ),
         ],
       ),
     );
