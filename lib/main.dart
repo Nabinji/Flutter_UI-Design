@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Agriplant/pages/agri_plant_main_screen.dart';
+import 'package:flutter_ui_design/Job%20Finder%20App%20UI/screens/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AgriPlantMainScreen(),
+      home: JobFinderAppHomePage(),
     );
   }
 }

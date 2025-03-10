@@ -67,6 +67,7 @@ dependencies:
   flutter_iconly: ^1.0.2
   badges: ^3.1.2
   easy_stepper: ^0.8.5+1
+  bottom_navy_bar: ^6.1.0
 
 dev_dependencies:
   flutter_test:
@@ -117,6 +118,8 @@ flutter:
     - assets/health/
     - assets/educational-app/
     - assets/agriplant/
+    - assets/grocery-ui/
+    - assets/job-finder/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
