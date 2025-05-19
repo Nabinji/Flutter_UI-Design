@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/Model/profile_model.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/profile_detail_screen.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Model/model.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Screen/profile_detail_screen.dart';
 
 class VideoLiveScreen extends StatelessWidget {
   final StreamItems streamItems;

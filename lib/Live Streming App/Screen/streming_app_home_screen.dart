@@ -2,9 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_design/Live%20Streming%20App/Constants/colors.dart';
 import 'package:flutter_ui_design/Live%20Streming%20App/Model/stream_category.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/Model/profile_model.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/live_stream_screen.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/profile_detail_screen.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Model/model.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Screen/live_stream_screen.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Screen/profile_detail_screen.dart';
 import 'package:iconsax/iconsax.dart';
 
 class GoLiveScreen extends StatefulWidget {
@@ -224,7 +224,7 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      childAspectRatio: .8,
+                      childAspectRatio: 0.7,
                     ),
                     itemBuilder: (context, index) {
                       final liveStream = stream[index];
@@ -241,17 +241,18 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
                         },
                         child: SizedBox(
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Stack(
                                 children: [
                                   ClipRRect(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(20),
                                     child: Hero(
                                       tag: liveStream.image,
                                       child: Image.network(
                                         liveStream.image,
-                                        width: size.width * .4,
-                                        height: size.height * .2,
+                                        width: size.width * .47,
+                                        height: size.height * .25,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -341,7 +342,8 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            horizontal: 7),
+                                          horizontal: 7,
+                                        ),
                                         child: CircleAvatar(
                                           backgroundImage: NetworkImage(
                                             liveStream.url,
@@ -367,7 +369,9 @@ class _GoLiveScreenState extends State<GoLiveScreen> {
                                               color: Colors.white60),
                                         )
                                       ],
-                                    )
+                                    ),
+                                    const Spacer(),
+                                    const Icon(Icons.more_vert,color: Colors.white60), const SizedBox(width: 10)
                                   ],
                                 ),
                               )

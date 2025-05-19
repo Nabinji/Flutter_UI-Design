@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/Model/profile_model.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Model/model.dart';
 
 class ProfileDetailScreen extends StatelessWidget {
   final StreamItems stream;
@@ -26,7 +26,7 @@ class ProfileDetailScreen extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top:52,
+                      top: 52,
                       right: 0,
                       left: 0,
                       child: Padding(
@@ -321,7 +321,8 @@ class ProfileDetailScreen extends StatelessWidget {
                                         const SizedBox(width: 3),
                                         Text(
                                           stream.viewer,
-                                          style: const TextStyle(color: Colors.white),
+                                          style: const TextStyle(
+                                              color: Colors.white),
                                         )
                                       ],
                                     ),
@@ -351,7 +352,7 @@ class ProfileDetailScreen extends StatelessWidget {
                             Positioned(
                               bottom: 20,
                               left: 15,
-                              child:  Text(
+                              child: Text(
                                 stream.streamTitle,
                                 style: const TextStyle(
                                   color: Colors.white,

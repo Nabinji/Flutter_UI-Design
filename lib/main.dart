@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ui_design/Live%20Streming%20App/streming_app_home_screen.dart';
+import 'package:flutter_ui_design/Live%20Streming%20App/Screen/streming_app_home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,44 +17,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // for hive database
 // void main() async {
